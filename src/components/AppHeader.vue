@@ -1,22 +1,24 @@
 <template>
   <nav class="navbar navbar-dark navbar-expand-sm header" @touchmove.stop>
-    <RouterLink class="header-index-link" to="/">
+    <RouterLink class="header-index-link" to="/" @click="checkNavExpend">
       <img src="/logo_text.png" alt="weiyang_logo" class="header-logo"
     /></RouterLink>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler border-0"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarScroll"
+      data-bs-target="#weiYangNavbarScroll"
       aria-controls="navbarScroll"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      ref="toggleButton"
     >
       <span class="navbar-toggler-icon text-white"></span>
     </button>
     <div
       class="collapse flex-grow-sm-1 flex-grow-0 navbar-collapse"
-      id="navbarScroll"
+      id="weiYangNavbarScroll"
+      ref="navbar"
     >
       <ul class="navbar-nav my-0 header-item-frame">
         <li
@@ -37,6 +39,7 @@
             <li v-for="child in headerLink.children" :key="child.title">
               <RouterLink
                 class="dropdown-item header-dropdown-item"
+                @click="checkNavExpend"
                 :to="child.path"
               >
                 {{ child.title }}
@@ -89,6 +92,13 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    checkNavExpend() {
+      if ([...this.$refs.navbar.classList].includes("show")) {
+        this.$refs.toggleButton.click();
+      }
+    },
   },
   components: {},
 };
