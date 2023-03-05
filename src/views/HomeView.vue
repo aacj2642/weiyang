@@ -18,14 +18,13 @@
 <style lang="scss" scoped>
 @import "../scss/customVariables";
 .banner {
-  max-width: 100%;
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
 
   background-position: center bottom -20px;
   height: 480px;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     background-position: center bottom -40px;
     height: 800px;
   }
@@ -34,7 +33,7 @@
   display: block;
   width: 320px;
   margin: 35px auto 0;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     margin-top: 92px;
     width: 460px;
   }

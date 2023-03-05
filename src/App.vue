@@ -1,6 +1,6 @@
 <template>
   <AppHeader />
-  <RouterView class="container main" />
+  <RouterView class="main" />
   <AppFooter />
 </template>
 
@@ -25,12 +25,7 @@ export default {
   margin-top: 64px;
   // all - header - footer
   min-height: calc(100vh - 64px - 292px);
-  @media (min-width: map-get($grid-breakpoints, sm)) {
-    // header
-    margin-top: 100px;
-    // all - header - footer
-    min-height: calc(100vh - 100px - 292px);
-  }
+  
   @media (min-width: map-get($grid-breakpoints, md)) {
     // header
     margin-top: 100px;

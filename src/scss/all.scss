@@ -6,3 +6,11 @@
 [v-cloak] {
   display: none;
 }
+
+html {
+  overflow-y: scroll;
+  background-color: $primary;
+}
+body {
+  background-color: $primary;
+}

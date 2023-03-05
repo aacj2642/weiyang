@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark navbar-expand-sm header" @touchmove.stop>
+  <nav class="navbar navbar-dark navbar-expand-md header" @touchmove.stop>
     <RouterLink class="header-index-link" to="/" @click="checkNavExpend">
       <img src="/logo_text.png" alt="weiyang_logo" class="header-logo"
     /></RouterLink>
@@ -28,7 +28,7 @@
       </div>
     </button>
     <div
-      class="collapse flex-grow-sm-1 flex-grow-0 navbar-collapse"
+      class="collapse flex-grow-md-1 flex-grow-0 navbar-collapse"
       id="weiYangNavbarScroll"
       ref="navbar"
     >
@@ -131,7 +131,7 @@ export default {
 }
 .header-index-link {
   padding: 14px 12px;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     padding: 32px 40px;
   }
 }
@@ -141,13 +141,13 @@ export default {
 .header-item-frame {
   max-height: calc(100vh - 64px);
   overflow-y: auto;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     overflow-y: visible;
   }
 }
 .header-item-frame > .nav-item:last-child {
   padding: 0px;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     padding-right: 40px;
   }
 }
@@ -159,7 +159,7 @@ export default {
 }
 .dropdown-item.header-dropdown-item {
   padding: 16px 12px;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     padding: 12px 16px;
   }
 }
