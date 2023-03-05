@@ -47,7 +47,7 @@
           >
             {{ headerLink.title }}
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark p-0">
+          <ul class="dropdown-menu dropdown-menu-dark animate effect p-0">
             <li v-for="child in headerLink.children" :key="child.title">
               <RouterLink
                 class="dropdown-item header-dropdown-item"
@@ -155,7 +155,10 @@ export default {
   top: calc(100% - 30px);
 }
 .header-dropdown {
-  padding: 38px 20px;
+  padding: 12px 16px;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: 38px 20px;
+  }
 }
 .dropdown-item.header-dropdown-item {
   padding: 16px 12px;
@@ -182,5 +185,42 @@ export default {
 .scale-enter-from,
 .scale-leave-to {
   transform: scale(0);
+}
+
+.animate {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+}
+
+.effect {
+  animation-name: scale;
+}
+
+@media (min-width: map-get($grid-breakpoints, md)) {
+  .effect {
+    animation-name: slide-in;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleY(0%);
+  }
+
+  100% {
+    transform: scaleY(100%);
+  }
 }
 </style>
