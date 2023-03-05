@@ -35,6 +35,7 @@
   width: 320px;
   margin: 35px auto 0;
   @media (min-width: map-get($grid-breakpoints, sm)) {
+    margin-top: 92px;
     width: 460px;
   }
 }
