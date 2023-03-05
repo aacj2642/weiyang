@@ -317,7 +317,14 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark
+  "dark":       $dark,
+  "gray-50":    $gray-50,
+  "gray-40":    $gray-40,
+  "gray-30":    $gray-30,
+  "gray-20":    $gray-20,
+  "white":      $white,
+  "white-40":   $white-40,
+  "white-30":   $white-30
 ) !default;
 // scss-docs-end theme-colors-map
 

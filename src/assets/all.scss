@@ -1,8 +1,11 @@
 @import "bootstrap/scss/functions";
-@import "./_customVariables";
-
+@import "./myVariables";
+@import "./customVariables";
 @import "bootstrap/scss/bootstrap.scss";
 
+@import "./textSetting";
+
 [v-cloak] {
-    display: none;
+  display: none;
 }
+

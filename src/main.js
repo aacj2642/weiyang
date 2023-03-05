@@ -7,8 +7,6 @@ import VueAxios from "vue-axios";
 import App from "./App.vue";
 import router from "./router";
 
-import "./assets/all.scss";
-import "./assets/main.css";
 
 import { defineRule, Form, Field, ErrorMessage, configure } from "vee-validate";
 import { required, email, min, max } from "@vee-validate/rules";

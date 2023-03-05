@@ -1,11 +1,25 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
+  <h1>未央樂集</h1>
+  <h2>未央樂集</h2>
+  <h3>未央樂集</h3>
+  <h4>未央樂集</h4>
+  <h5>未央樂集</h5>
+  <div class="body-1">未央樂集</div>
+  <div>未央樂集</div>
+  <div class="caption">未央樂集</div>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -19,6 +33,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <RouterView />
 </template>
+
+<style lang="scss">
+@import "./assets/all.scss";
+</style>
 
 <style scoped>
 header {
