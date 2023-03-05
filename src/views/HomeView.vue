@@ -1,15 +1,7 @@
 <template>
-  <div class="home">
-    <h1>This is an home page</h1>
+  <div>
+    <div class="bg-success mb-2">This is an home page</div>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<style></style>

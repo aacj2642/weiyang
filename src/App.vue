@@ -1,103 +1,41 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <h1>未央樂集</h1>
-  <h2>未央樂集</h2>
-  <h3>未央樂集</h3>
-  <h4>未央樂集</h4>
-  <h5>未央樂集</h5>
-  <div class="body-1">未央樂集</div>
-  <div>未央樂集</div>
-  <div class="caption">未央樂集</div>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <AppHeader />
+  <RouterView class="container main" />
+  <AppFooter />
 </template>
 
-<style lang="scss">
-@import "./assets/all.scss";
-</style>
+<script>
+import { RouterLink, RouterView } from "vue-router";
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
+export default {
+  components: {
+    AppHeader,
+    AppFooter,
+  },
+};
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<style lang="scss" scoped>
+@import "./scss/customVariables";
+.main {
+  padding: 12px;
+  // header
+  margin-top: 64px;
+  // all - header - footer
+  min-height: calc(100vh - 64px - 292px);
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    // header
+    margin-top: 100px;
+    // all - header - footer
+    min-height: calc(100vh - 100px - 292px);
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    // header
+    margin-top: 100px;
+    // all - header - footer
+    min-height: calc(100vh - 100px - 344px);
   }
 }
 </style>

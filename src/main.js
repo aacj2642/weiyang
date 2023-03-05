@@ -3,10 +3,12 @@ import { createPinia } from "pinia";
 import Loading from "vue-loading-overlay";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import "bootstrap";
 
 import App from "./App.vue";
 import router from "./router";
 
+import "./scss/all.scss";
 
 import { defineRule, Form, Field, ErrorMessage, configure } from "vee-validate";
 import { required, email, min, max } from "@vee-validate/rules";
