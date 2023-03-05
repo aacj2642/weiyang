@@ -8,7 +8,7 @@
           rgba(var(--bs-primary-rgb), 0.3) 30%,
           rgba(var(--bs-primary-rgb), 0) 100%
         ),
-        url('/group_photo.jpg');
+        url('./group_photo.jpg');
     "
   >
     <img src="/hero-text.png" alt="weiyang" class="banner-text" />
