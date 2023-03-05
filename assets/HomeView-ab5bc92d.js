@@ -1,1 +1,0 @@
-import{_ as e,o as s,c,a as o}from"./index-4738f241.js";const t={},a=o("div",{class:"bg-success mb-2"},"This is an home page",-1),n=[a];function _(r,i){return s(),c("div",null,n)}const l=e(t,[["render",_]]);export{l as default};
