@@ -1,0 +1,1 @@
+import{_ as e,o,c as s,b as t}from"./index-fc4fe23a.js";const c={},n={class:"container"},a=t("h1",null,"This is an about page",-1),_=[a];function r(i,d){return o(),s("div",n,_)}const f=e(c,[["render",r]]);export{f as default};
