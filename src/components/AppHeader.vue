@@ -5,6 +5,7 @@
     /></RouterLink>
     <button
       class="navbar-toggler border-0"
+      @click="navbarExpend = !navbarExpend"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#weiYangNavbarScroll"
@@ -13,7 +14,18 @@
       aria-label="Toggle navigation"
       ref="toggleButton"
     >
-      <span class="navbar-toggler-icon text-white"></span>
+      <div class="position-relative" style="width: 30px; height: 30px">
+        <Transition name="scale">
+          <span
+            v-if="!navbarExpend"
+            class="navbar-toggler-icon header-toggler-icon text-white"
+          ></span>
+          <span
+            v-else
+            class="navbar-toggler-icon header-toggler-icon btn-close"
+          ></span>
+        </Transition>
+      </div>
     </button>
     <div
       class="collapse flex-grow-sm-1 flex-grow-0 navbar-collapse"
@@ -61,6 +73,7 @@ import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
+      navbarExpend: false,
       headerLinks: [
         {
           title: "關於我們",
@@ -149,5 +162,25 @@ export default {
   @media (min-width: map-get($grid-breakpoints, sm)) {
     padding: 12px 16px;
   }
+}
+
+.header-toggler-icon {
+  position: absolute;
+  left: 0;
+}
+.header-toggler-icon.btn-close {
+  opacity: 1;
+  filter: invert(1);
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0);
 }
 </style>
