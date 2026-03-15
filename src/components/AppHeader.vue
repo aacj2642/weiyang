@@ -54,10 +54,10 @@ export default {
         {
           title: "消息動向",
           children: [
-            { title: "最新消息", path: "/about" },
-            { title: "演出訊息", path: "/about" },
-            { title: "講座訊息", path: "/about" },
-            { title: "活動行事曆", path: "/about" },
+            { title: "所有消息", path: "/all-news" },
+            { title: "演出訊息", path: "/performance-news" },
+            { title: "講座訊息", path: "/seminar-news" },
+            // { title: "活動行事曆", path: "/calendar" },
           ],
         },
         {

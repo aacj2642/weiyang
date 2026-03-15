@@ -19,9 +19,29 @@ const router = createRouter({
       component: () => import("../views/MemberView.vue"),
     },
     {
-      path: "/member/:id",
-      name: "member-detail",
-      component: () => import("../views/MemberDetailView.vue"),
+      path: "/all-news",
+      name: "all-news",
+      component: () => import("../views/NewsListView.vue"),
+    },
+    {
+      path: "/performance-news",
+      name: "performance-news",
+      component: () => import("../views/NewsListView.vue"),
+    },
+    {
+      path: "/seminar-news",
+      name: "seminar-news",
+      component: () => import("../views/NewsListView.vue"),
+    },
+    {
+      path: "/news/:id",
+      name: "news-detail",
+      component: () => import("../views/NewsDetailView.vue"),
+    },
+    {
+      path: "/calendar",
+      name: "calendar",
+      component: () => import("../views/CalendarView.vue"),
     },
     {
       path: "/performance",
@@ -34,7 +54,8 @@ const router = createRouter({
       return savedPosition;
     } else {
       return {
-        top: 0, behavior: "instant",
+        top: 0,
+        behavior: "instant",
       };
     }
   },
