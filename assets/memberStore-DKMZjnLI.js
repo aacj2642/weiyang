@@ -1,4 +1,4 @@
-import{r as e}from"./index-tlgMO7W4.js";var t={color:`#f0c040`,bg:`rgba(240, 192, 64, 0.15)`},n=e(`member`,{state:()=>({memberCategories:[{name:`吹管組`,members:[{id:`1`,name:`張維明`,role:`梆笛 / 曲笛`,positions:[`團長`],description:`張維明是一位才華橫溢的笛子演奏家，自幼便展現出過人的音樂天賦。在國立臺灣藝術大學主修中國音樂期間，師承多位笛藝名家，打下了紮實的演奏基礎。他擅長梆笛與曲笛的演奏，音色清亮高亢而不失韻味，技巧純熟且富有表現力，無論是北派的激昂奔放，還是南派的婉轉悠揚，都能駕馭自如。
+import{r as e}from"./index-BNWaYh7i.js";var t={color:`#f0c040`,bg:`rgba(240, 192, 64, 0.15)`},n=e(`member`,{state:()=>({memberCategories:[{name:`吹管組`,members:[{id:`1`,name:`張維明`,role:`梆笛 / 曲笛`,positions:[`團長`],description:`張維明是一位才華橫溢的笛子演奏家，自幼便展現出過人的音樂天賦。在國立臺灣藝術大學主修中國音樂期間，師承多位笛藝名家，打下了紮實的演奏基礎。他擅長梆笛與曲笛的演奏，音色清亮高亢而不失韻味，技巧純熟且富有表現力，無論是北派的激昂奔放，還是南派的婉轉悠揚，都能駕馭自如。
 
 在多年的演奏生涯中，張維明多次參與大型音樂會與文化交流活動，足跡遍及國內外各大音樂廳。他曾於國家音樂廳舉辦個人獨奏會，並受邀赴日本、新加坡、馬來西亞等地巡演，備受當地觀眾與樂評人讚賞。
 
@@ -68,4 +68,4 @@ import{r as e}from"./index-tlgMO7W4.js";var t={color:`#f0c040`,bg:`rgba(240, 192
 
 王志偉的工作範疇十分廣泛。在基礎設施方面，他負責樂團官方網站的設計、開發與日常維護，確保網站內容的即時更新與良好的使用體驗。他也管理著樂團的內部通訊系統與檔案共享平台，讓團員之間的溝通與資料交流更加便捷順暢。
 
-在數位行銷方面，王志偉運用他的技術專長，為樂團建立了完善的社群媒體經營策略。他製作精美的圖文內容與影音素材，在各大社群平台上推廣樂團的演出訊息與活動動態，有效提升了樂團的線上能見度與觀眾參與度。此外，他也積極探索演出直播、線上購票系統等數位工具的應用，推動樂團的數位轉型，讓傳統國樂也能與現代科技完美結合。`}]}].map(e=>({...e,members:e.members.map(e=>({...e,positions:e.positions||[],avatar:`/weiyang/member/${e.id}/avatar.jpg`,artisticPhoto:`/weiyang/member/${e.id}/art.jpg`}))}))}),getters:{allCategories:e=>[{name:`樂團成員`,members:e.memberCategories.reduce((e,t)=>e.concat(t.members),[])},...e.memberCategories],getMemberById:e=>t=>{for(let n of e.memberCategories){let e=n.members.find(e=>e.id===String(t));if(e)return e}return null}}});export{n,t};
+在數位行銷方面，王志偉運用他的技術專長，為樂團建立了完善的社群媒體經營策略。他製作精美的圖文內容與影音素材，在各大社群平台上推廣樂團的演出訊息與活動動態，有效提升了樂團的線上能見度與觀眾參與度。此外，他也積極探索演出直播、線上購票系統等數位工具的應用，推動樂團的數位轉型，讓傳統國樂也能與現代科技完美結合。`}]}].map(e=>({...e,members:e.members.map(e=>({...e,avatar:`/weiyang/member/${e.id}/avatar.jpg`,artisticPhoto:`/weiyang/member/${e.id}/art.jpg`}))}))}),getters:{allCategories:e=>[{name:`樂團成員`,members:e.memberCategories.reduce((e,t)=>e.concat(t.members),[])},...e.memberCategories],getMemberById:e=>t=>{for(let n of e.memberCategories){let e=n.members.find(e=>e.id===String(t));if(e)return e}return null}}});export{n,t};
