@@ -21,7 +21,7 @@ export default {
 @import "./scss/customVariables";
 
 .main {
-  padding: 12px;
+  padding: 2rem;
   // header
   margin-top: 65px;
   // all - header - footer

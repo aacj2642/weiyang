@@ -1,5 +1,5 @@
 <template>
-  <div class="member-detail-page container-fluid py-5">
+  <div class="member-detail-page">
     <div class="row mb-5">
       <div class="col-12 text-center">
         <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
@@ -87,8 +87,6 @@ export default {
 
 .member-detail-page {
   background-color: $primary;
-  min-height: calc(100vh - 100px);
-  padding-top: 2rem !important;
   animation: fadeIn 0.8s ease-out;
 }
 

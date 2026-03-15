@@ -108,7 +108,6 @@ export const useMemberStore = defineStore('member', {
       ...category,
       members: category.members.map(member => ({
         ...member,
-        positions: member.positions || [],
         avatar: `${import.meta.env.BASE_URL}member/${member.id}/avatar.jpg`,
         artisticPhoto: `${import.meta.env.BASE_URL}member/${member.id}/art.jpg`
       }))

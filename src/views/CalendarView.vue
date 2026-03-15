@@ -1,5 +1,5 @@
 <template>
-  <div class="calendar-view container-fluid py-5">
+  <div class="calendar-view">
     <div class="row mb-5 mt-5">
       <div class="col-12 text-center">
         <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
@@ -33,7 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 .calendar-view {
-  min-height: 80vh;
   background-color: #0c0f12;
   animation: fadeIn 0.8s ease-out;
 }

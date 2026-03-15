@@ -89,7 +89,6 @@ export default {
 
 <style lang="scss" scoped>
 .news-detail-view {
-  min-height: 90vh;
   background-color: #0c0f12;
   animation: fadeIn 0.8s ease-out;
 }

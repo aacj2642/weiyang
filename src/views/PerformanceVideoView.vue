@@ -1,5 +1,5 @@
 <template>
-  <div class="video-page container-fluid py-5">
+  <div class="video-page">
     <div class="row mb-5">
       <div class="col-12 text-center">
         <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
@@ -118,9 +118,7 @@ export default {
 
 .video-page {
   background-color: $primary;
-  min-height: calc(100vh - 100px);
   color: white;
-  padding-top: 2rem !important;
 }
 
 .category-title {
