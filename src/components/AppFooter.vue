@@ -21,7 +21,7 @@
           </a>
         </div>
       </div>
-      <div class="text-center text-white-40 caption py-4">
+      <div class="text-center text-white-40 caption py-2">
         Copyright © Wei Yang Sizhule 2023
       </div>
     </footer>
@@ -43,9 +43,6 @@ export default {
 <style lang="scss" scoped>
 @import "../scss/customVariables";
 .contact-info {
-  padding: 40px 0;
-  @media (min-width: map-get($grid-breakpoints, md)) {
-    padding: 100px 0;
-  }
+  padding: 24px 0;
 }
 </style>

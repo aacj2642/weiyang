@@ -1,59 +1,28 @@
 <template>
   <nav class="navbar navbar-dark navbar-expand-md header" @touchmove.stop>
     <RouterLink class="header-index-link" to="/" @click="checkNavExpend">
-      <img src="/logo_text.png" alt="weiyang_logo" class="header-logo"
-    /></RouterLink>
-    <button
-      class="navbar-toggler border-0"
-      @click="navbarExpend = !navbarExpend"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#weiYangNavbarScroll"
-      aria-controls="navbarScroll"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      ref="toggleButton"
-    >
+      <img src="/logo_text.png" alt="weiyang_logo" class="header-logo" />
+    </RouterLink>
+    <button class="navbar-toggler border-0" @click="navbarExpend = !navbarExpend" type="button"
+      data-bs-toggle="collapse" data-bs-target="#weiYangNavbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+      aria-label="Toggle navigation" ref="toggleButton">
       <div class="position-relative" style="width: 30px; height: 30px">
         <Transition name="scale">
-          <span
-            v-if="!navbarExpend"
-            class="navbar-toggler-icon header-toggler-icon text-white"
-          ></span>
-          <span
-            v-else
-            class="navbar-toggler-icon header-toggler-icon btn-close"
-          ></span>
+          <span v-if="!navbarExpend" class="navbar-toggler-icon header-toggler-icon text-white"></span>
+          <span v-else class="navbar-toggler-icon header-toggler-icon btn-close"></span>
         </Transition>
       </div>
     </button>
-    <div
-      class="collapse flex-grow-md-1 flex-grow-0 navbar-collapse"
-      id="weiYangNavbarScroll"
-      ref="navbar"
-    >
+    <div class="collapse flex-grow-md-1 flex-grow-0 navbar-collapse" id="weiYangNavbarScroll" ref="navbar">
       <ul class="navbar-nav my-0 header-item-frame">
-        <li
-          v-for="headerLink in headerLinks"
-          :key="headerLink.title"
-          class="nav-item dropdown"
-        >
-          <a
-            class="nav-link dropdown-toggle header-dropdown"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+        <li v-for="headerLink in headerLinks" :key="headerLink.title" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle header-dropdown" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             {{ headerLink.title }}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark animate effect p-0">
             <li v-for="child in headerLink.children" :key="child.title">
-              <RouterLink
-                class="dropdown-item header-dropdown-item"
-                @click="checkNavExpend"
-                :to="child.path"
-              >
+              <RouterLink class="dropdown-item header-dropdown-item" @click="checkNavExpend" :to="child.path">
                 {{ child.title }}
               </RouterLink>
             </li>
@@ -79,28 +48,22 @@ export default {
           title: "關於我們",
           children: [
             { title: "樂集介紹", path: "/about" },
-            { title: "成員介紹", path: "/about" },
+            { title: "成員介紹", path: "/member" },
           ],
         },
         {
-          title: "樂團動向",
+          title: "消息動向",
           children: [
             { title: "最新消息", path: "/about" },
             { title: "演出訊息", path: "/about" },
             { title: "講座訊息", path: "/about" },
             { title: "活動行事曆", path: "/about" },
-            { title: "演出影音", path: "/about" },
           ],
         },
         {
-          title: "周邊販售",
-          children: [{ title: "商品列表", path: "/about" }],
-        },
-        {
-          title: "會員專區",
+          title: "演出影音",
           children: [
-            { title: "我的活動", path: "/about" },
-            { title: "訂單列表", path: "/about" },
+            { title: "演出影音", path: "/about" },
           ],
         },
       ],
@@ -119,6 +82,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/customVariables";
+
 .header {
   padding: 0;
   justify-content: space-between;
@@ -128,40 +92,53 @@ export default {
   right: 0;
   background-color: rgba(var(--bs-primary-rgb), 0.8);
   border-bottom: 1px solid var(--bs-white-40);
+  z-index: 1030;
 }
+
 .header-index-link {
   padding: 14px 12px;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding: 32px 40px;
   }
 }
+
 .header-logo {
   height: 36px;
 }
+
 .header-item-frame {
   max-height: calc(100vh - 64px);
   overflow-y: auto;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     overflow-y: visible;
   }
 }
-.header-item-frame > .nav-item:last-child {
+
+.header-item-frame>.nav-item:last-child {
   padding: 0px;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding-right: 40px;
   }
 }
+
 .header-item-frame .dropdown-menu {
   top: calc(100% - 30px);
 }
+
 .header-dropdown {
   padding: 12px 16px;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding: 38px 20px;
   }
 }
+
 .dropdown-item.header-dropdown-item {
   padding: 16px 12px;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding: 12px 16px;
   }
@@ -171,6 +148,7 @@ export default {
   position: absolute;
   left: 0;
 }
+
 .header-toggler-icon.btn-close {
   opacity: 1;
   filter: invert(1);

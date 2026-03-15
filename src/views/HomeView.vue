@@ -1,19 +1,36 @@
 <template>
-  <div
-    class="banner"
-    style="
-      background-image: linear-gradient(
-          rgba(var(--bs-primary-rgb), 1) 0%,
-          rgba(var(--bs-primary-rgb), 0.7) 20%,
-          rgba(var(--bs-primary-rgb), 0.3) 30%,
-          rgba(var(--bs-primary-rgb), 0) 100%
-        ),
-        url('./group_photo.jpg');
-    "
-  >
-    <img src="/hero-text.png" alt="weiyang" class="banner-text" />
+  <div>
+    <div
+      class="banner"
+      style="
+        background-image: linear-gradient(
+            rgba(var(--bs-primary-rgb), 1) 0%,
+            rgba(var(--bs-primary-rgb), 0.7) 20%,
+            rgba(var(--bs-primary-rgb), 0.3) 30%,
+            rgba(var(--bs-primary-rgb), 0) 100%
+          ),
+          url('./group_photo.jpg');
+      "
+    >
+      <img src="/hero-text.png" alt="weiyang" class="banner-text" />
+    </div>
+    
+    <AboutSection />
+    <NewsSection />
   </div>
 </template>
+
+<script>
+import AboutSection from "@/components/AboutSection.vue";
+import NewsSection from "@/components/NewsSection.vue";
+
+export default {
+  components: {
+    AboutSection,
+    NewsSection,
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 @import "../scss/customVariables";
