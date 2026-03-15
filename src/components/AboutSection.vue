@@ -1,10 +1,10 @@
 <template>
   <div class="about-section position-relative overflow-hidden">
-    <div class="container py-5 mt-lg-5">
+    <div class="container py-5">
       <div class="row align-items-stretch">
 
         <!-- Left Item: Image and Logo -->
-        <div class="col-12 col-lg-6 position-relative d-flex flex-column">
+        <div class="col-12 col-lg-6 mb-5 mb-lg-0 position-relative d-flex flex-column">
           <div class="image-wrapper w-100 flex-grow-1 position-relative">
             <img src="/index_girl.png" class="img-fluid w-100 h-100 object-fit-cover shadow-lg" />
           </div>
@@ -28,14 +28,16 @@
         <!-- Right Item: Vertical Text & Button -->
         <div class="col d-flex flex-column position-relative">
 
-          <div class="d-flex flex-row-reverse justify-content-start text-white flex-grow-1 mt-lg-n5">
+          <div class="d-flex flex-row-reverse justify-content-center text-white flex-grow-1 mt-lg-n5">
 
-            <div class="d-flex flex-column align-items-center">
-              <h2 class="fs-2 fw-medium mb-0"
-                style="writing-mode: vertical-rl; letter-spacing: 0.4em; font-family: serif;">關於我們</h2>
+            <div class="d-flex flex-row-reverse align-items-start">
+              <h3 class="fw-medium m-0" style="writing-mode: vertical-rl; letter-spacing: 0.4em; font-family: serif;">
+                關於我們
+              </h3>
               <div
-                style="writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.4em; font-family: sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.4);">
-                ABOUT US</div>
+                style="writing-mode: vertical-rl; text-orientation: upright; font-family: sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.4);">
+                ABOUT US
+              </div>
             </div>
 
             <!-- Col 3: Desc Block 1 -->
