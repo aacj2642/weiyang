@@ -30,7 +30,7 @@
 
           <div class="d-flex flex-row-reverse justify-content-center text-white flex-grow-1 mt-lg-n5">
 
-            <div class="d-flex flex-row-reverse align-items-start">
+            <div v-if="showInternalTitle" class="d-flex flex-row-reverse align-items-start">
               <h3 class="fw-medium m-0" style="writing-mode: vertical-rl; letter-spacing: 0.4em; font-family: serif;">
                 關於我們
               </h3>
@@ -71,6 +71,12 @@ export default {
   name: "AboutSection",
   components: {
     RouterLink,
+  },
+  props: {
+    showInternalTitle: {
+      type: Boolean,
+      default: true,
+    },
   },
 };
 </script>

@@ -55,12 +55,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-body px-0 pt-3">
+                <div class="card-body px-0 pt-3 pb-0">
                   <h4 class="h6 fw-bold text-white mb-2 playlist-title-text">{{ playlist.title }}</h4>
-                  <div class="d-flex align-items-center text-white-50" style="font-size: 0.8rem;">
-                    <i class="bi bi-collection-play me-2"></i>
-                    <span>未央樂集精選清單</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -242,7 +238,6 @@ export default {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 3rem;
 }
 
 .subscribe-btn {

@@ -12,11 +12,15 @@
           url('./group_photo.jpg');
       "
     >
-      <img src="/hero-text.png" alt="weiyang" class="banner-text" />
+      <img src="/hero-text.png" alt="weiyang" class="banner-text animate-fade-in-up" />
     </div>
     
-    <AboutSection />
-    <NewsSection />
+    <div class="reveal" ref="aboutSec">
+      <AboutSection />
+    </div>
+    <div class="reveal w-100" ref="newsSec">
+      <NewsSection />
+    </div>
   </div>
 </template>
 
@@ -28,6 +32,29 @@ export default {
   components: {
     AboutSection,
     NewsSection,
+  },
+  mounted() {
+    this.initScrollReveal();
+  },
+  methods: {
+    initScrollReveal() {
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            // Once revealed, we can stop observing this element
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const revealElements = this.$el.querySelectorAll(".reveal");
+      revealElements.forEach((el) => observer.observe(el));
+    },
   },
 };
 </script>
