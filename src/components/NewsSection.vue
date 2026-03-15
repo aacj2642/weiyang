@@ -1,5 +1,5 @@
 <template>
-  <div class="news-section text-white py-5">
+  <div class="news-section text-white">
     <div class="container py-5">
       <!-- Tabs -->
       <ul class="nav justify-content-center mb-5 news-tabs">
@@ -98,6 +98,7 @@ export default {
 @import "../scss/customVariables";
 
 .news-section {
+  width: 100%;
   background-color: #0c0f12; /* Adjust to match the screenshot */
 }
 

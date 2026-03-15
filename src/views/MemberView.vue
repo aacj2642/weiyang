@@ -16,14 +16,22 @@
       <div class="tab-content" id="member-tabContent">
         <div class="tab-pane fade" :class="{ 'show active': index === 0 }" :id="'content-' + index" role="tabpanel" :aria-labelledby="'tab-' + index" tabindex="0" v-for="(category, index) in allCategories" :key="category.name">
           <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
-            <div class="col" v-for="member in category.members" :key="member.name">
-              <div class="card h-100 text-center border-0 bg-transparent">
+            <div class="col" v-for="member in category.members" :key="member.id || member.name">
+              <div class="card h-100 text-center border-0 bg-transparent member-card" @click="member.id ? $router.push(`/member/${member.id}`) : null">
                 <div class="avatar-wrapper mx-auto mb-3 shadow-sm text-light">
                   <!-- 1:1 Avatar -->
-                  <img :src="member.avatar" class="w-100 h-100 object-fit-cover text-white-50" :alt="member.name">
+                  <img :src="member.avatar" @error="handleImageError($event, member.name)" class="w-100 h-100 object-fit-cover text-white-50" :alt="member.name">
                 </div>
                 <div class="card-body p-0">
                   <h4 class="card-title fw-bold mb-2 member-name-text">{{ member.name }}</h4>
+                  <div class="position-badges mb-2" v-if="member.positions && member.positions.length">
+                    <span
+                      v-for="pos in member.positions"
+                      :key="pos"
+                      class="badge rounded-pill me-1 position-badge"
+                      :style="badgeStyle"
+                    >{{ pos }}</span>
+                  </div>
                   <p class="card-text fs-6 member-role-text">{{ member.role }}</p>
                 </div>
               </div>
@@ -36,65 +44,21 @@
 </template>
 
 <script>
+import { mapState } from 'pinia';
+import { useMemberStore, positionBadgeStyle } from '@/stores/memberStore';
+
 export default {
   name: "MemberView",
-  data() {
-    return {
-      // Mock data for Chinese traditional music sizing ensemble
-      memberCategories: [
-        {
-          name: "吹管組",
-          members: [
-            { name: "張維明", role: "梆笛 / 曲笛", avatar: "https://fakeimg.pl/400x400/8c9b9a/ffffff?text=吹管&font=noto" },
-            { name: "李佳穎", role: "笙", avatar: "https://fakeimg.pl/400x400/8c9b9a/ffffff?text=吹管&font=noto" },
-            { name: "陳冠宇", role: "簫 / 嗩吶", avatar: "https://fakeimg.pl/400x400/8c9b9a/ffffff?text=吹管&font=noto" }
-          ]
-        },
-        {
-          name: "拉弦組",
-          members: [
-            { name: "林志豪", role: "二胡", avatar: "https://fakeimg.pl/400x400/7a8e8b/ffffff?text=拉弦&font=noto" },
-            { name: "王心妍", role: "二胡", avatar: "https://fakeimg.pl/400x400/7a8e8b/ffffff?text=拉弦&font=noto" },
-            { name: "吳宗翰", role: "中胡", avatar: "https://fakeimg.pl/400x400/7a8e8b/ffffff?text=拉弦&font=noto" }
-          ]
-        },
-        {
-          name: "彈撥組",
-          members: [
-            { name: "劉詩婷", role: "琵琶", avatar: "https://fakeimg.pl/400x400/69827e/ffffff?text=彈撥&font=noto" },
-            { name: "黃俊傑", role: "揚琴", avatar: "https://fakeimg.pl/400x400/69827e/ffffff?text=彈撥&font=noto" },
-            { name: "趙麗華", role: "中阮 / 柳琴", avatar: "https://fakeimg.pl/400x400/69827e/ffffff?text=彈撥&font=noto" },
-            { name: "周家威", role: "古箏", avatar: "https://fakeimg.pl/400x400/69827e/ffffff?text=彈撥&font=noto" }
-          ]
-        },
-        {
-          name: "低音組",
-          members: [
-            { name: "許哲銘", role: "大提琴", avatar: "https://fakeimg.pl/400x400/587570/ffffff?text=低音&font=noto" },
-            { name: "鄭怡君", role: "低音提琴", avatar: "https://fakeimg.pl/400x400/587570/ffffff?text=低音&font=noto" }
-          ]
-        },
-        {
-          name: "擊樂組",
-          members: [
-            { name: "吳亭亭", role: "排鼓 / 定音鼓", avatar: "https://fakeimg.pl/400x400/476963/ffffff?text=擊樂&font=noto" },
-            { name: "謝子安", role: "各種打擊樂器", avatar: "https://fakeimg.pl/400x400/476963/ffffff?text=擊樂&font=noto" }
-          ]
-        }
-      ]
-    };
-  },
   computed: {
-    allCategories() {
-      // Create 'All Members' category
-      const allMembersCategory = {
-        name: "樂團成員",
-        members: this.memberCategories.reduce((acc, category) => {
-          return acc.concat(category.members);
-        }, [])
-      };
-      
-      return [allMembersCategory, ...this.memberCategories];
+    ...mapState(useMemberStore, ['allCategories']),
+    badgeStyle() {
+      return { color: positionBadgeStyle.color, backgroundColor: positionBadgeStyle.bg, border: '1px solid ' + positionBadgeStyle.color };
+    },
+  },
+  methods: {
+    handleImageError(e, memberName) {
+      // Fallback if image not found to fakeimg
+      e.target.src = `https://pbs.twimg.com/media/GBtW3HCacAAwykB.jpg`;
     }
   }
 };
@@ -159,5 +123,23 @@ export default {
       font-weight: bold;
     }
   }
+}
+
+.member-card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    .member-name-text {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+}
+
+.position-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25em 0.65em;
+  letter-spacing: 0.03rem;
 }
 </style>

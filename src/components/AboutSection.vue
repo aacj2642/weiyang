@@ -6,8 +6,7 @@
         <!-- Left Item: Image and Logo -->
         <div class="col-12 col-lg-6 position-relative d-flex flex-column">
           <div class="image-wrapper w-100 flex-grow-1 position-relative">
-            <img src="/index_girl.png" alt="Girl playing instrument"
-              class="img-fluid w-100 h-100 object-fit-cover shadow-lg" />
+            <img src="/index_girl.png" class="img-fluid w-100 h-100 object-fit-cover shadow-lg" />
           </div>
 
           <!-- Logo Section overlapping bottom left of image -->
@@ -52,7 +51,7 @@
           <!-- Bottom Button -->
           <div class="d-flex w-100 align-items-center mt-5 mb-lg-5 position-relative z-3">
             <div class="flex-grow-1 border-top border-white border-opacity-25 me-4"></div>
-            <RouterLink to="/about"
+            <RouterLink to="/member"
               class="btn btn-outline-light rounded-0 px-4 py-2 d-flex align-items-center text-nowrap">
               成員介紹 <i class="bi bi-arrow-right ms-3"></i>
             </RouterLink>
@@ -88,9 +87,9 @@ export default {
 
 .logo-box {
   background-color: $primary;
-  padding: 20px 30px 0 0;
-  bottom: 20px;
-  left: calc(var(--bs-gutter-x) / 2);
+  padding: 16px;
+  bottom: 0;
+  right: calc(var(--bs-gutter-x) / 2);
 }
 
 .weiyang-logo {
