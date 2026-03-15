@@ -108,7 +108,7 @@ export default {
 }
 
 .header-item-frame {
-  max-height: calc(100vh - 64px);
+  max-height: calc(100vh - 65px);
   overflow-y: auto;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
@@ -128,10 +128,19 @@ export default {
   top: calc(100% - 30px);
 }
 
+@media (min-width: map-get($grid-breakpoints, md)) {
+  .nav-item.dropdown:hover>.dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
+
 .header-dropdown {
   padding: 12px 16px;
+  pointer-events: auto;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
+    pointer-events: none;
     padding: 38px 20px;
   }
 }
