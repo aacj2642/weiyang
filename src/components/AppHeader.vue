@@ -63,7 +63,7 @@ export default {
         {
           title: "演出影音",
           children: [
-            { title: "演出影音", path: "/about" },
+            { title: "演出影音", path: "/performance" },
           ],
         },
       ],

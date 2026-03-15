@@ -23,6 +23,11 @@ const router = createRouter({
       name: "member-detail",
       component: () => import("../views/MemberDetailView.vue"),
     },
+    {
+      path: "/performance",
+      name: "performance-video",
+      component: () => import("../views/PerformanceVideoView.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
