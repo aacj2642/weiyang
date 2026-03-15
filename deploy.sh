@@ -24,6 +24,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:aacj2642/aacj2642.github.io.git main
 
 # if you are deploying to https://aacj2642.github.io/weiyang
-git push -f git@github.com:aacj2642/weiyang.git main:gh-pages
+# git push -f git@github.com:aacj2642/weiyang.git main:gh-pages
+git push -f https://github.com/aacj2642/weiyang.git main:gh-pages
 
 cd -
