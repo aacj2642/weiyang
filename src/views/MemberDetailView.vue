@@ -1,24 +1,21 @@
 <template>
   <div class="member-detail-page py-5">
     <div class="container text-light mt-5">
-      <div class="row align-items-center mb-5" v-if="member">
+      <div class="row align-items-start" v-if="member">
         <div class="col-md-5 text-center mb-4 mb-md-0">
           <div class="avatar-wrapper mx-auto shadow-lg">
-            <img :src="member.artisticPhoto || member.avatar" @error="handleImageError" class="w-100 h-100 object-fit-cover" :alt="member.name">
+            <img :src="member.artisticPhoto || member.avatar" @error="handleImageError"
+              class="w-100 h-100 object-fit-cover" :alt="member.name">
           </div>
         </div>
         <div class="col-md-7 text-center text-md-start">
           <h2 class="fw-bold mb-3 member-name-text text-white">{{ member.name }}</h2>
           <div class="position-badges mb-3" v-if="member.positions && member.positions.length">
-            <span
-              v-for="pos in member.positions"
-              :key="pos"
-              class="badge rounded-pill me-1 position-badge"
-              :style="badgeStyle"
-            >{{ pos }}</span>
+            <span v-for="pos in member.positions" :key="pos" class="badge rounded-pill me-1 position-badge"
+              :style="badgeStyle">{{ pos }}</span>
           </div>
           <h4 class="mb-4 member-role-text text-white-50">{{ member.role }}</h4>
-          <p class="fs-5 lh-lg my-4">{{ member.description }}</p>
+          <p class="fs-5 lh-lg my-4" style="white-space: pre-line;">{{ member.description }}</p>
           <button class="btn btn-outline-light mt-4 px-4 py-2 rounded-pill" @click="$router.push('/member')">
             <i class="bi bi-arrow-left me-2"></i>返回成員列表
           </button>
@@ -60,7 +57,7 @@ export default {
       const memberId = this.$route.params.id;
       const store = useMemberStore();
       this.member = store.getMemberById(memberId) || null;
-      
+
       if (this.member) {
         document.title = `${this.member.name} - 樂團成員介紹`;
       }
@@ -77,7 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 .member-detail-page {
-  min-height: calc(100vh - 80px); /* Adjust based on navbar height */
   display: flex;
   align-items: center;
 }
@@ -89,12 +85,12 @@ export default {
   overflow: hidden;
   border: 5px solid rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0 .5rem 2rem rgba(255, 255, 255, 0.15)!important;
+    box-shadow: 0 .5rem 2rem rgba(255, 255, 255, 0.15) !important;
   }
-  
+
   @media (min-width: 768px) {
     border-width: 8px;
   }

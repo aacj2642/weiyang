@@ -23,19 +23,19 @@ export default {
 .main {
   padding: 12px;
   // header
-  margin-top: 64px;
+  margin-top: 65px;
   // all - header - footer
-  min-height: calc(100vh - 64px - 228px);
+  min-height: calc(100vh - 65px - 228px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
+    margin-top: 101px;
     // header
-    margin-top: 100px;
     // all - header - footer
-    min-height: calc(100vh - 100px - 160px);
+    min-height: calc(100vh - 101px - 160px);
   }
 }
 </style>
