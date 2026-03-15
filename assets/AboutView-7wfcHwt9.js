@@ -1,1 +1,0 @@
-import{D as e,t,u as n,w as r}from"./_plugin-vue_export-helper-BoCPyeg_.js";import{t as i}from"./AboutSection-D_BdvTKY.js";var a={components:{AboutSection:i}};function o(t,i,a,o,s,c){let l=e(`AboutSection`);return r(),n(l)}var s=t(a,[[`render`,o]]);export{s as default};
