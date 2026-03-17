@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div
-      class="banner"
-      style="
+    <div class="banner" style="
         background-image: linear-gradient(
             rgba(var(--bs-primary-rgb), 1) 0%,
             rgba(var(--bs-primary-rgb), 0.7) 20%,
@@ -10,11 +8,10 @@
             rgba(var(--bs-primary-rgb), 0) 100%
           ),
           url('./group_photo.jpg');
-      "
-    >
+      ">
       <img src="/hero-text.png" alt="weiyang" class="banner-text animate-fade-in-up" />
     </div>
-    
+
     <div class="reveal" ref="aboutSec">
       <AboutSection />
     </div>
@@ -61,24 +58,27 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/customVariables";
+
 .banner {
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
-
-  background-position: center bottom -20px;
+  background-position: center;
   height: 480px;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
-    background-position: center bottom -40px;
     height: 800px;
   }
 }
+
 .banner-text {
   display: block;
   width: 320px;
-  margin: 35px auto 0;
+  max-width: 100%;
+  margin: 15px auto 0;
+
   @media (min-width: map-get($grid-breakpoints, md)) {
-    margin-top: 92px;
+    margin-top: 15px;
     width: 460px;
   }
 }

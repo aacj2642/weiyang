@@ -11,16 +11,15 @@
 
           <!-- Logo Section overlapping bottom left of image -->
           <div class="logo-box position-absolute z-2 d-flex align-items-center">
-            <img src="/weiyang_logo.png" alt="Weiyang Logo" class="weiyang-logo me-3" />
-            <div
-              class="logo-text d-flex flex-column justify-content-center border-end border-white border-opacity-25 pe-4 me-4">
-              <span class="fs-4 fw-bold letter-spacing-wide mb-1">未央樂集</span>
+            <img src="/weiyang_logo.png" alt="Weiyang Logo" class="weiyang-logo me-2 me-md-3" />
+            <div class=" d-flex flex-column justify-content-center border-end border-white border-opacity-25 pe-4 me-4">
+              <span class="fw-bold letter-spacing-wide mb-1" style="font-size: 1rem;">未央樂集</span>
               <span class="text-white-50 letter-spacing-widest"
-                style="font-size: 0.65rem; line-height: 1;">WEIYANGSIZHULE</span>
+                style="line-height: 1;font-size: 0.65rem;">WEIYANGSIZHULE</span>
             </div>
             <div class="d-flex flex-column justify-content-center">
-              <span class="letter-spacing-wide mb-1" style="font-size: 0.85rem;">國樂演奏</span>
-              <span class="letter-spacing-wide" style="font-size: 0.85rem;">音樂講座</span>
+              <span class="letter-spacing-wide mb-1">國樂演奏</span>
+              <span class="letter-spacing-wide">音樂講座</span>
             </div>
           </div>
         </div>
@@ -42,11 +41,11 @@
 
             <!-- Col 3: Desc Block 1 -->
             <div class="d-flex flex-row-reverse">
-              <p class="mb-0 text-white-75 paragraph-text">未央是漢代宮殿的名稱，</p>
-              <p class="mb-0 text-white-75 paragraph-text">意謂未盡；</p>
-              <p class="mb-0 text-white-75 paragraph-text">樂集因樂而聚。</p>
-              <p class="mb-0 text-white-75 paragraph-text">標誌選用青色期待如春季萬物萌發，</p>
-              <p class="mb-0 text-white-75 paragraph-text">以笛與琵琶象徵本團以絲竹為根基。</p>
+              <p class="about-text">未央是漢代宮殿的名稱，</p>
+              <p class="about-text">意謂未盡；</p>
+              <p class="about-text">樂集因樂而聚。</p>
+              <p class="about-text">標誌選用青色期待如春季萬物萌發，</p>
+              <p class="about-text">以笛與琵琶象徵本團以絲竹為根基。</p>
             </div>
           </div>
 
@@ -98,23 +97,38 @@ export default {
   padding: 16px;
   bottom: 0;
   right: calc(var(--bs-gutter-x) / 2);
+  font-size: 12px;
+
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    font-size: 16px;
+  }
 }
+
 
 .weiyang-logo {
-  width: 65px;
-  height: 65px;
+  width: 40px;
+  height: 40px;
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    width: 65px;
+    height: 65px;
+  }
 }
 
-.paragraph-text {
+.about-text {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0;
   writing-mode: vertical-rl;
   letter-spacing: 0.3em;
   line-height: 2;
   font-family: serif;
   font-size: 0.95rem;
-}
+  margin: 0 8px;
 
-.text-white-75 {
-  color: rgba(255, 255, 255, 0.75);
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    margin: 0 15px;
+  }
 }
 
 .letter-spacing-wide {

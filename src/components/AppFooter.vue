@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="text-center text-white-40 caption py-2">
-        Copyright © Wei Yang Sizhule 2023
+        Copyright © Wei Yang Sizhule 2026
       </div>
     </footer>
   </div>
