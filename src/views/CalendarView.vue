@@ -104,14 +104,17 @@
 import { ref, computed } from "vue";
 import { useNewsStore } from "../stores/newsStore";
 
+const sharedViewMode = ref("month");
+const sharedCurrentDate = ref(new Date());
+
 export default {
   name: "CalendarView",
   setup() {
     const newsStore = useNewsStore();
     const allNews = computed(() => newsStore.allNews);
 
-    const viewMode = ref("month");
-    const currentDate = ref(new Date());
+    const viewMode = sharedViewMode;
+    const currentDate = sharedCurrentDate;
 
     const currentYear = computed(() => currentDate.value.getFullYear());
     const currentMonth = computed(() => currentDate.value.getMonth());
