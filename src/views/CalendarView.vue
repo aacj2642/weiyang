@@ -80,8 +80,8 @@
 
               <div v-if="monthItem.events.length > 0" class="month-events-preview d-flex flex-column gap-2">
                 <div v-for="event in monthItem.events.slice(0, 3)" :key="event.id"
-                  class="text-white-50 small text-truncate">
-                  <span class="text-primary me-2">•</span>{{ getEventTypeLabel(event.type) }}-{{ event.title }}
+                  class="text-white-50 small text-break">
+                  <span class="text-white me-2">•</span>{{ getEventTypeLabel(event.type) }}-{{ event.title }}
                 </div>
                 <div v-if="monthItem.events.length > 3" class="text-white-50 small fst-italic mt-1">
                   ...及其他 {{ monthItem.events.length - 3 }} 則活動
@@ -341,7 +341,7 @@ export default {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 1px;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -362,6 +362,7 @@ export default {
   min-height: 100px;
   padding: 0.5rem;
   transition: background-color 0.2s;
+  min-width: 0;
 
   @media (min-width: 768px) {
     min-height: 120px;
@@ -404,9 +405,9 @@ export default {
   font-size: 0.8rem;
   padding: 0.3rem 0.6rem;
   border-radius: 0.25rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s;
@@ -431,19 +432,19 @@ export default {
 
 .year-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
 
   @media (min-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   @media (min-width: 992px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
