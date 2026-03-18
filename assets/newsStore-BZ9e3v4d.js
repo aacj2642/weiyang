@@ -1,4 +1,4 @@
-import{i as e}from"./index-esePX_pC.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`屏緣—陳睿霆作品發表會`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
+import{i as e}from"./index-DAxfyTuo.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`屏緣—陳睿霆作品發表會`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
 駐團作曲家—陳睿霆的作品發表會
 將用音樂連結其與屏東的緣分
 以其對屏東的緣分與在地故事作為發想
