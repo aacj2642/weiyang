@@ -57,7 +57,7 @@ export default {
             { title: "所有消息", path: "/all-news" },
             { title: "演出訊息", path: "/performance-news" },
             { title: "講座訊息", path: "/seminar-news" },
-            // { title: "活動行事曆", path: "/calendar" },
+            { title: "活動行事曆", path: "/calendar" },
           ],
         },
         {
