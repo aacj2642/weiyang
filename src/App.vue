@@ -1,4 +1,5 @@
 <template>
+  <LoadingScreen :isLoading="!isLoaded" />
   <AppHeader />
   <RouterView class="main" />
   <AppFooter />
@@ -9,10 +10,32 @@ import { RouterLink, RouterView } from "vue-router";
 
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
+import LoadingScreen from "./components/LoadingScreen.vue";
+
 export default {
   components: {
     AppHeader,
     AppFooter,
+    LoadingScreen,
+  },
+  data() {
+    return {
+      isLoaded: false,
+    };
+  },
+  mounted() {
+    const handleLoad = () => {
+      // 確保至少有一點點動畫時間，讓畫面典雅過渡
+      setTimeout(() => {
+        this.isLoaded = true;
+      }, 600);
+    };
+
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
   },
 };
 </script>
