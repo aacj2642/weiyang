@@ -96,10 +96,10 @@ export default {
 }
 
 .header-index-link {
-  padding: 14px 12px;
+  padding: 12px;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
-    padding: 32px 40px;
+    padding: 24px;
   }
 }
 
@@ -116,16 +116,21 @@ export default {
   }
 }
 
+.nav-item{
+  letter-spacing: 3px;
+  margin-right: 12px;
+}
+
 .header-item-frame>.nav-item:last-child {
   padding: 0px;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
-    padding-right: 40px;
+    padding-right: 24px;
   }
 }
 
 .header-item-frame .dropdown-menu {
-  top: calc(100% - 30px);
+  top: calc(100% - 18px);
 }
 
 @media (min-width: map-get($grid-breakpoints, md)) {
@@ -141,7 +146,7 @@ export default {
 
   @media (min-width: map-get($grid-breakpoints, md)) {
     pointer-events: none;
-    padding: 38px 20px;
+    padding: 24px 20px;
   }
 }
 

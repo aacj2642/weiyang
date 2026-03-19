@@ -1,6 +1,6 @@
 <template>
   <div class="about-section position-relative overflow-hidden">
-    <div class="container py-5">
+    <div class="container">
       <div class="row align-items-stretch">
 
         <!-- Left Item: Image and Logo -->

@@ -1,6 +1,6 @@
 <template>
   <div v-if="newsItem" class="news-detail-view container-fluid pt-5 mt-5">
-    <div class="container py-5">
+    <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <!-- Back Button -->
@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="container py-5 mt-5 text-center text-white">
+  <div v-else class="container text-center text-white">
     <h3>找不到該消息</h3>
     <button @click="$router.push('/all-news')" class="btn btn-primary mt-4">查看所有消息</button>
   </div>

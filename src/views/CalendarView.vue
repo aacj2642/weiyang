@@ -1,6 +1,6 @@
 <template>
   <div class="calendar-view">
-    <div class="row mb-5 mt-5">
+    <div class="row mb-3 mt-5">
       <div class="col-12 text-center">
         <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
           <h2 class="display-4 fw-bold text-white mb-2 category-title">活動行事曆</h2>
@@ -252,7 +252,6 @@ export default {
 .calendar-view {
   background-color: #0c0f12;
   animation: fadeIn 0.8s ease-out;
-  min-height: 100vh;
 }
 
 .category-title {

@@ -55,10 +55,10 @@ export default {
   justify-content: center;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
-    margin-top: 101px;
+    margin-top: 85px;
     // header
     // all - header - footer
-    min-height: calc(100vh - 101px - 160px);
+    min-height: calc(100vh - 85px - 160px);
   }
 }
 </style>

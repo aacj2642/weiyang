@@ -1,6 +1,6 @@
 <template>
   <div class="news-section text-white">
-    <div class="container py-5">
+    <div class="container">
       <!-- Tabs -->
       <ul class="nav justify-content-center mb-5 news-tabs">
         <li v-for="tab in tabs" :key="tab.value" class="nav-item">

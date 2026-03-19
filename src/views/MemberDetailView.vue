@@ -1,11 +1,17 @@
 <template>
   <div class="member-detail-page">
-    <div class="row mb-5">
+    <div class="row mb-3">
       <div class="col-12 text-center">
-        <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
-          <h2 class="display-4 fw-bold text-white mb-2 category-title">成員介紹</h2>
+        <div
+          class="section-title-wrapper d-inline-flex flex-column align-items-center"
+        >
+          <h2 class="display-4 fw-bold text-white mb-2 category-title">
+            成員介紹
+          </h2>
           <div class="title-underline"></div>
-          <p class="text-white-50 mt-3 letter-spacing-wide">MEMBER INTRODUCTION</p>
+          <p class="text-white-50 mt-3 letter-spacing-wide">
+            MEMBER INTRODUCTION
+          </p>
         </div>
       </div>
     </div>
@@ -14,26 +20,48 @@
       <div class="row align-items-start" v-if="member">
         <div class="col-md-5 text-center mb-4 mb-md-0">
           <div class="avatar-wrapper mx-auto shadow-lg">
-            <img :src="member.artisticPhoto || member.avatar" @error="handleImageError"
-              class="w-100 h-100 object-fit-cover" :alt="member.name">
+            <img
+              :src="member.artisticPhoto || member.avatar"
+              @error="handleImageError"
+              class="w-100 h-100 object-fit-cover"
+              :alt="member.name"
+            />
           </div>
         </div>
         <div class="col-md-7 text-center text-md-start">
-          <h2 class="fw-bold mb-3 member-name-text text-white">{{ member.name }}</h2>
-          <div class="position-badges mb-3" v-if="member.positions && member.positions.length">
-            <span v-for="pos in member.positions" :key="pos" class="badge rounded-pill me-1 position-badge"
-              :style="badgeStyle">{{ pos }}</span>
+          <h2 class="fw-bold mb-3 member-name-text text-white">
+            {{ member.name }}
+          </h2>
+          <div
+            class="position-badges mb-3"
+            v-if="member.positions && member.positions.length"
+          >
+            <span
+              v-for="pos in member.positions"
+              :key="pos"
+              class="badge rounded-pill me-1 position-badge"
+              :style="badgeStyle"
+              >{{ pos }}</span
+            >
           </div>
           <h4 class="mb-4 member-role-text text-white-50">{{ member.role }}</h4>
-          <p class="fs-5 lh-lg my-4" style="white-space: pre-line;">{{ member.description }}</p>
-          <button class="btn btn-outline-light mt-4 px-4 py-2 rounded-pill" @click="$router.push('/member')">
+          <p class="lh-lg my-4" style="white-space: pre-line">
+            {{ member.description }}
+          </p>
+          <button
+            class="btn btn-outline-light mt-4 px-4 py-2 rounded-pill"
+            @click="$router.push('/member')"
+          >
             <i class="bi bi-arrow-left me-2"></i>返回成員列表
           </button>
         </div>
       </div>
       <div v-else class="text-center py-5 mt-5">
         <h3 class="text-white mb-4">找不到該成員資料</h3>
-        <button class="btn btn-outline-light px-4 py-2 rounded-pill" @click="$router.push('/member')">
+        <button
+          class="btn btn-outline-light px-4 py-2 rounded-pill"
+          @click="$router.push('/member')"
+        >
           <i class="bi bi-arrow-left me-2"></i>返回成員列表
         </button>
       </div>
@@ -42,25 +70,29 @@
 </template>
 
 <script>
-import { useMemberStore, positionBadgeStyle } from '@/stores/memberStore';
+import { useMemberStore, positionBadgeStyle } from "@/stores/memberStore";
 
 export default {
   name: "MemberDetailView",
   data() {
     return {
-      member: null
+      member: null,
     };
   },
   computed: {
     badgeStyle() {
-      return { color: positionBadgeStyle.color, backgroundColor: positionBadgeStyle.bg, border: '1px solid ' + positionBadgeStyle.color };
+      return {
+        color: positionBadgeStyle.color,
+        backgroundColor: positionBadgeStyle.bg,
+        border: "1px solid " + positionBadgeStyle.color,
+      };
     },
   },
   created() {
     this.fetchMember();
   },
   watch: {
-    '$route.params.id': 'fetchMember'
+    "$route.params.id": "fetchMember",
   },
   methods: {
     fetchMember() {
@@ -77,8 +109,8 @@ export default {
       if (this.member) {
         e.target.src = `https://pbs.twimg.com/media/GBtW3HCacAAwykB.jpg`;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -113,11 +145,13 @@ export default {
   border-radius: 8px;
   overflow: hidden;
   border: 5px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0 .5rem 2rem rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.15) !important;
   }
 
   @media (min-width: 768px) {
