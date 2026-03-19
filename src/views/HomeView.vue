@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="banner" style="
+    <div class="banner mb-5" style="
         background-image: linear-gradient(
             rgba(var(--bs-primary-rgb), 1) 0%,
             rgba(var(--bs-primary-rgb), 0.7) 20%,
@@ -12,11 +12,11 @@
       <img src="/hero-text.png" alt="weiyang" class="banner-text animate-fade-in-up" />
     </div>
 
-    <div class="reveal" ref="aboutSec">
+    <div class="reveal mb-5" ref="aboutSec">
       <AboutSection />
     </div>
     <div class="reveal w-100" ref="newsSec">
-      <NewsSection />
+      <NewsSection class="py-4" />
     </div>
   </div>
 </template>

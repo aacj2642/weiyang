@@ -41,7 +41,7 @@
       </div>
 
       <!-- More Button -->
-      <div class="text-center mt-5 pt-5">
+      <div class="text-center pt-5">
         <RouterLink :to="moreLink"
           class="btn btn-outline-light rounded-0 px-4 py-2 mt-5 letter-spacing-wide shadow-none">
           查看更多 <i class="bi bi-arrow-right ms-3"></i>
