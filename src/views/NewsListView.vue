@@ -1,6 +1,6 @@
 <template>
   <div class="news-list-view">
-    <div class="row mb-3 mt-5">
+    <div class="row mb-3">
       <div class="col-12 text-center">
         <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
           <h2 class="display-4 fw-bold text-white mb-2 category-title">{{ pageTitle }}</h2>

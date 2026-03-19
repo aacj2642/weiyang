@@ -1,11 +1,15 @@
 <template>
   <div class="calendar-view">
-    <div class="row mb-3 mt-5">
+    <div class="row mb-3">
       <div class="col-12 text-center">
         <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
-          <h2 class="display-4 fw-bold text-white mb-2 category-title">活動行事曆</h2>
+          <h2 class="display-4 fw-bold text-white mb-2 category-title">
+            活動行事曆
+          </h2>
           <div class="title-underline"></div>
-          <p class="text-white-50 mt-3 letter-spacing-wide">ACTIVITY CALENDAR</p>
+          <p class="text-white-50 mt-3 letter-spacing-wide">
+            ACTIVITY CALENDAR
+          </p>
         </div>
       </div>
     </div>
@@ -14,27 +18,38 @@
       <div class="calendar-container shadow-lg">
         <!-- Calendar Header -->
         <div class="calendar-header">
-          <div class="d-flex align-items-center gap-3">
-            <button @click="prev" class="calendar-nav-btn">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-            <h3 class="m-0 text-white fw-bold serif-title" style="min-width: 150px; text-align: center;">
-              {{ displayTitle }}
-            </h3>
-            <button @click="next" class="calendar-nav-btn">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-            <button @click="goToToday" class="btn btn-outline-light btn-sm ms-2 rounded-pill px-3">
+          <div class="calendar-header-left">
+            <div class="d-flex align-items-center gap-3">
+              <button @click="prev" class="calendar-nav-btn">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <h3 class="m-0 text-white fw-bold serif-title title-container"
+                style="min-width: 150px; text-align: center">
+                <template v-if="viewMode === 'month'">
+                  <span>{{ currentYear }} 年 </span>
+                  <span class="d-block d-sm-inline ms-sm-1">{{ currentMonth + 1 }} 月 </span>
+                </template>
+                <template v-else>
+                  <span>{{ currentYear }} 年 </span>
+                </template>
+              </h3>
+              <button @click="next" class="calendar-nav-btn">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+            <button @click="goToToday" class="btn btn-outline-light btn-sm rounded-pill px-3 today-btn">
               今天
             </button>
           </div>
 
-          <div class="btn-group" role="group">
-            <input type="radio" class="btn-check" name="viewMode" id="monthView" value="month" v-model="viewMode">
-            <label class="btn custom-view-toggle" for="monthView">月</label>
+          <div class="calendar-header-right">
+            <div class="btn-group" role="group">
+              <input type="radio" class="btn-check" name="viewMode" id="monthView" value="month" v-model="viewMode" />
+              <label class="btn custom-view-toggle" for="monthView">月</label>
 
-            <input type="radio" class="btn-check" name="viewMode" id="yearView" value="year" v-model="viewMode">
-            <label class="btn custom-view-toggle" for="yearView">年</label>
+              <input type="radio" class="btn-check" name="viewMode" id="yearView" value="year" v-model="viewMode" />
+              <label class="btn custom-view-toggle" for="yearView">年</label>
+            </div>
           </div>
         </div>
 
@@ -47,8 +62,10 @@
             </div>
 
             <!-- Days -->
-            <div v-for="(day, index) in calendarDays" :key="index" class="calendar-day"
-              :class="{ 'other-month': !day.isCurrentMonth, 'is-today': day.isToday }">
+            <div v-for="(day, index) in calendarDays" :key="index" class="calendar-day" :class="{
+              'other-month': !day.isCurrentMonth,
+              'is-today': day.isToday,
+            }">
               <div class="d-flex justify-content-between align-items-start mb-2">
                 <span class="day-number">{{ day.dayNumber }}</span>
               </div>
@@ -56,9 +73,11 @@
               <!-- Events -->
               <div class="events-container d-flex flex-column gap-1">
                 <RouterLink v-for="event in day.events" :key="event.id" :to="'/news/' + event.id" class="event-badge"
-                  :class="event.type === 'performance' ? 'event-performance' : 'event-seminar'"
-                  :title="`${getEventTypeLabel(event.type)}-${event.title}`">
-                  {{ event.time.split('-')[0] }} {{ event.title }}
+                  :class="event.type === 'performance'
+                    ? 'event-performance'
+                    : 'event-seminar'
+                    " :title="`${getEventTypeLabel(event.type)}-${event.title}`">
+                  {{ event.time.split("-")[0] }} {{ event.title }}
                 </RouterLink>
               </div>
             </div>
@@ -70,7 +89,6 @@
           <div class="year-grid">
             <div v-for="monthItem in yearMonths" :key="monthItem.monthNumber" class="month-card"
               :class="{ 'has-events': monthItem.events.length > 0 }" @click="selectMonth(monthItem.monthNumber - 1)">
-
               <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-white-10 pb-2">
                 <h4 class="month-card-title m-0">{{ monthItem.monthName }}</h4>
                 <span v-if="monthItem.events.length > 0" class="badge bg-primary rounded-pill">
@@ -90,11 +108,9 @@
               <div v-else class="text-white-50 small opacity-50">
                 無活動安排
               </div>
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -118,13 +134,6 @@ export default {
 
     const currentYear = computed(() => currentDate.value.getFullYear());
     const currentMonth = computed(() => currentDate.value.getMonth());
-
-    const displayTitle = computed(() => {
-      if (viewMode.value === "month") {
-        return `${currentYear.value} 年 ${currentMonth.value + 1} 月`;
-      }
-      return `${currentYear.value} 年`;
-    });
 
     const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
 
@@ -159,7 +168,7 @@ export default {
       const year = currentYear.value;
       const months = [];
       for (let m = 0; m < 12; m++) {
-        const events = allNews.value.filter(news => {
+        const events = allNews.value.filter((news) => {
           const newsDate = new Date(news.date);
           return newsDate.getFullYear() === year && newsDate.getMonth() === m;
         });
@@ -178,10 +187,11 @@ export default {
 
     function createDayObject(dateObj, isCurrentMonth) {
       const dateStr = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, "0")}-${String(dateObj.getDate()).padStart(2, "0")}`;
-      const events = allNews.value.filter(news => news.date === dateStr);
+      const events = allNews.value.filter((news) => news.date === dateStr);
 
       const today = new Date();
-      const isToday = today.getFullYear() === dateObj.getFullYear() &&
+      const isToday =
+        today.getFullYear() === dateObj.getFullYear() &&
         today.getMonth() === dateObj.getMonth() &&
         today.getDate() === dateObj.getDate();
 
@@ -191,23 +201,39 @@ export default {
         dayNumber: dateObj.getDate(),
         isCurrentMonth,
         isToday,
-        events
+        events,
       };
     }
 
     function next() {
       if (viewMode.value === "month") {
-        currentDate.value = new Date(currentYear.value, currentMonth.value + 1, 1);
+        currentDate.value = new Date(
+          currentYear.value,
+          currentMonth.value + 1,
+          1,
+        );
       } else {
-        currentDate.value = new Date(currentYear.value + 1, currentMonth.value, 1);
+        currentDate.value = new Date(
+          currentYear.value + 1,
+          currentMonth.value,
+          1,
+        );
       }
     }
 
     function prev() {
       if (viewMode.value === "month") {
-        currentDate.value = new Date(currentYear.value, currentMonth.value - 1, 1);
+        currentDate.value = new Date(
+          currentYear.value,
+          currentMonth.value - 1,
+          1,
+        );
       } else {
-        currentDate.value = new Date(currentYear.value - 1, currentMonth.value, 1);
+        currentDate.value = new Date(
+          currentYear.value - 1,
+          currentMonth.value,
+          1,
+        );
       }
     }
 
@@ -234,7 +260,8 @@ export default {
 
     return {
       viewMode,
-      displayTitle,
+      currentYear,
+      currentMonth,
       weekdays,
       calendarDays,
       yearMonths,
@@ -242,7 +269,7 @@ export default {
       prev,
       goToToday,
       selectMonth,
-      getEventTypeLabel
+      getEventTypeLabel,
     };
   },
 };
@@ -295,13 +322,33 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
   }
+}
+
+.calendar-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.title-container {
+  line-height: 1.3;
+}
+
+.calendar-header-right {
+  display: flex;
+  justify-content: center;
 }
 
 .calendar-nav-btn {
@@ -376,7 +423,7 @@ export default {
   }
 
   &.is-today .day-number {
-    background-color: var(--bs-primary);
+    background-color: var(--bs-danger);
     color: white;
     border-radius: 50%;
     width: 26px;
