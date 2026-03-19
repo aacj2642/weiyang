@@ -42,7 +42,7 @@
             </button>
           </div>
 
-          <div class="calendar-header-right">
+          <div class="calendar-header-right d-none d-sm-block">
             <div class="btn-group" role="group">
               <input type="radio" class="btn-check" name="viewMode" id="monthView" value="month" v-model="viewMode" />
               <label class="btn custom-view-toggle" for="monthView">月</label>
@@ -96,12 +96,14 @@
                 </span>
               </div>
 
-              <div v-if="monthItem.events.length > 0" class="month-events-preview d-flex flex-column gap-2">
-                <div v-for="event in monthItem.events.slice(0, 3)" :key="event.id"
-                  class="text-white-50 small text-break">
-                  <span class="text-white me-2">•</span>{{ getEventTypeLabel(event.type) }}-{{ event.title }}
-                </div>
-                <div v-if="monthItem.events.length > 3" class="text-white-50 small fst-italic mt-1">
+              <div v-if="monthItem.events.length > 0" class="month-events-preview d-flex flex-column gap-1 mt-2">
+                <RouterLink v-for="event in monthItem.events.slice(0, 3)" :key="event.id" :to="'/news/' + event.id" class="event-badge"
+                  :class="event.type === 'performance' ? 'event-performance' : 'event-seminar'"
+                  :title="`${getEventTypeLabel(event.type)}-${event.title}`"
+                  @click.stop>
+                  {{ event.time ? event.time.split("-")[0] : '' }} {{ event.title }}
+                </RouterLink>
+                <div v-if="monthItem.events.length > 3" class="text-white-50 small fst-italic mt-1 text-center">
                   ...及其他 {{ monthItem.events.length - 3 }} 則活動
                 </div>
               </div>
@@ -117,7 +119,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useNewsStore } from "../stores/newsStore";
 
 const sharedViewMode = ref("month");
@@ -134,6 +136,27 @@ export default {
 
     const currentYear = computed(() => currentDate.value.getFullYear());
     const currentMonth = computed(() => currentDate.value.getMonth());
+
+    let lastIsMobile = typeof window !== 'undefined' ? window.innerWidth < 576 : false;
+
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 576;
+      if (isMobile && !lastIsMobile) {
+        viewMode.value = "year";
+      }
+      lastIsMobile = isMobile;
+    };
+
+    onMounted(() => {
+      if (lastIsMobile) {
+        viewMode.value = "year";
+      }
+      window.addEventListener("resize", handleResize);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("resize", handleResize);
+    });
 
     const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
 
@@ -250,7 +273,7 @@ export default {
     function getEventTypeLabel(type) {
       switch (type) {
         case "performance":
-          return "音樂會";
+          return "演出";
         case "seminar":
           return "講座";
         default:

@@ -11,7 +11,7 @@
           <!-- Main Content -->
           <div class="news-header mb-5">
             <div class="news-type-badge mb-3">
-              <span class="badge rounded-pill px-3 py-2 bg-primary-soft text-primary letter-spacing-wide">
+              <span class="badge rounded-pill px-3 py-2 text-white letter-spacing-wide">
                 {{ newsTypeLabel }}
               </span>
             </div>
@@ -26,8 +26,7 @@
           <div class="row g-5">
             <div class="col-md-6">
               <div class="news-image-container rounded-3 overflow-hidden shadow-lg mb-4">
-                <img :src="newsItem.image" :alt="newsItem.title" class="img-fluid w-100"
-                  @error="handleImageError">
+                <img :src="newsItem.image" :alt="newsItem.title" class="img-fluid w-100" @error="handleImageError">
               </div>
             </div>
             <div class="col-md-6">
@@ -37,9 +36,10 @@
                   {{ newsItem.description }}
                 </div>
               </div>
-              
+
               <div class="action-buttons mt-5 pt-4 border-top border-white-10">
-                <a href="https://reurl.cc/0KQbm6" target="_blank" class="btn btn-primary px-5 py-3 rounded-0 letter-spacing-wide shadow-none">
+                <a href="https://reurl.cc/0KQbm6" target="_blank"
+                  class="btn btn-primary px-5 py-3 rounded-0 letter-spacing-wide shadow-none">
                   立即報名 / 購票 <i class="bi bi-arrow-up-right-square ms-2"></i>
                 </a>
               </div>
@@ -98,10 +98,6 @@ h1 {
   font-family: serif;
 }
 
-.bg-primary-soft {
-  background-color: rgba(var(--bs-primary-rgb), 0.15);
-}
-
 .news-image-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -128,6 +124,7 @@ h1 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
