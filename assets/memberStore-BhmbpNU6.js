@@ -1,4 +1,4 @@
-import{i as e}from"./index-CZVpwSdJ.js";var t={color:`#f0c040`,bg:`rgba(240, 192, 64, 0.15)`},n=e(`member`,{state:()=>({memberCategories:[{name:`團長`,members:[{id:`3`,name:`王亭又`,role:`古琴 / 阮 / 柳琴`,positions:[`團長`],description:`• 高雄市人，大學進入國樂社後學習阮咸，曾與于惠蘭、吳惠琴老師學習，大學起一直師從黃相勳老師迄今。古琴師從楊宏榮老師。自進入大學以來，一直擔任高師大國樂社各項行政職務，如譜務、文書、樂管、總務、103級團長、彈撥組長等職。
+import{i as e}from"./index-BNb5cFM5.js";var t={color:`#f0c040`,bg:`rgba(240, 192, 64, 0.15)`},n=e(`member`,{state:()=>({memberCategories:[{name:`團長`,members:[{id:`3`,name:`王亭又`,role:`古琴 / 阮 / 柳琴`,positions:[`團長`],description:`• 高雄市人，大學進入國樂社後學習阮咸，曾與于惠蘭、吳惠琴老師學習，大學起一直師從黃相勳老師迄今。古琴師從楊宏榮老師。自進入大學以來，一直擔任高師大國樂社各項行政職務，如譜務、文書、樂管、總務、103級團長、彈撥組長等職。
 • 曾任新興高中、高雄女中、中正高中、立志中學國文教師，以及高市國附屬市民國樂團譜務、雄中松濤國樂社彈撥分組老師、高醫采詩國樂社指導老師。
 • 現為中正高工國文老師，以及中正高工國樂社、高師大追月國樂社指導老師、未央樂集團長。`}]},{name:`總監`,members:[{id:`5`,name:`薛青麗`,role:`二胡`,positions:[`藝術總監`],description:`高雄市國樂團二胡演奏家。
 
