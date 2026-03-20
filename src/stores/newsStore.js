@@ -6,6 +6,7 @@ export const useNewsStore = defineStore("news", {
       {
         id: "1",
         title: "屏緣—陳睿霆作品發表會",
+        link: "https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k",
         type: "performance",
         date: "2025-08-15",
         time: "19:30",
@@ -27,6 +28,7 @@ Flame Bug 火焰蟲
       {
         id: "2",
         title: "品味三國--空城與古琴（貳）",
+        link: "https://reurl.cc/0KQbm6",
         type: "seminar",
         date: "2025-06-29",
         time: "14:30-16:30",
@@ -55,6 +57,7 @@ Flame Bug 火焰蟲
       {
         id: "3",
         title: "協奏樂未央",
+        link: null,
         type: "performance",
         date: "2025-05-29",
         time: "19:30",
@@ -105,8 +108,11 @@ Flame Bug 火焰蟲
       }));
     },
     allNews: (getters) => getters.news,
-    performanceNews: (getters) => getters.news.filter((item) => item.type === "performance"),
-    seminarNews: (getters) => getters.news.filter((item) => item.type === "seminar"),
-    getNewsById: (getters) => (id) => getters.news.find((item) => item.id === String(id)),
+    performanceNews: (getters) =>
+      getters.news.filter((item) => item.type === "performance"),
+    seminarNews: (getters) =>
+      getters.news.filter((item) => item.type === "seminar"),
+    getNewsById: (getters) => (id) =>
+      getters.news.find((item) => item.id === String(id)),
   },
 });
