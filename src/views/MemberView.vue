@@ -123,6 +123,9 @@ export default {
       };
     },
   },
+  mounted() {
+    document.title = "成員介紹 - 未央樂集";
+  },
   methods: {
     handleImageError(e, memberName) {
       // Fallback if image not found to fakeimg

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { useNewsStore } from "../stores/newsStore";
 
@@ -69,6 +69,10 @@ export default {
         return "講座訊息";
       }
       return "所有消息";
+    });
+
+    watchEffect(() => {
+      document.title = `${pageTitle.value} - 未央樂集`;
     });
 
     const formatDate = (dateStr) => {

@@ -101,7 +101,7 @@ export default {
       this.member = store.getMemberById(memberId) || null;
 
       if (this.member) {
-        document.title = `${this.member.name} - 樂團成員介紹`;
+        document.title = `${this.member.name} - 未央樂集`;
       }
     },
 

@@ -31,6 +31,7 @@ export default {
     NewsSection,
   },
   mounted() {
+    document.title = "首頁 - 未央樂集";
     this.initScrollReveal();
   },
   methods: {

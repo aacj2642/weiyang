@@ -20,6 +20,9 @@ export default {
   components: {
     AboutSection,
   },
+  mounted() {
+    document.title = "關於我們 - 未央樂集";
+  },
 };
 </script>
 

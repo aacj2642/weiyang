@@ -148,6 +148,7 @@ export default {
     };
 
     onMounted(() => {
+      document.title = "活動行事曆 - 未央樂集";
       if (lastIsMobile) {
         viewMode.value = "year";
       }

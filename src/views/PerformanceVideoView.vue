@@ -95,6 +95,9 @@ export default {
       ],
     };
   },
+  mounted() {
+    document.title = "演出影音 - 未央樂集";
+  },
   methods: {
     setCurrentPlaylist(playlist) {
       this.currentPlaylist = playlist;
