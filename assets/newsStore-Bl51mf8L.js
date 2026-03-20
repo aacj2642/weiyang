@@ -1,4 +1,4 @@
-import{i as e}from"./index-DalBxLae.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`屏緣—陳睿霆作品發表會`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
+import{i as e}from"./index-U1du_sI5.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`屏緣—陳睿霆作品發表會`,link:`https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
 駐團作曲家—陳睿霆的作品發表會
 將用音樂連結其與屏東的緣分
 以其對屏東的緣分與在地故事作為發想
@@ -10,7 +10,7 @@ Flame Bug 火焰蟲
 全場共9首曲目
 傳統與現代的融合
 絕對讓您刷新音樂體驗
-邀請您一同投入來自屏東的熱情懷抱！`},{id:`2`,title:`品味三國--空城與古琴（貳）`,type:`seminar`,date:`2025-06-29`,time:`14:30-16:30`,location:`大東文化中心2樓演講廳`,description:`鄭溪和老師以諸葛亮的一生為引線，
+邀請您一同投入來自屏東的熱情懷抱！`},{id:`2`,title:`品味三國--空城與古琴（貳）`,link:`https://reurl.cc/0KQbm6`,type:`seminar`,date:`2025-06-29`,time:`14:30-16:30`,location:`大東文化中心2樓演講廳`,description:`鄭溪和老師以諸葛亮的一生為引線，
 藉由陳濬寬老師的古琴與歌聲，
 並由駐團作曲家陳睿霆創作《空城計》
 期待將歷史、文學與音樂交織成章，
@@ -29,7 +29,7 @@ Flame Bug 火焰蟲
 報名方式：網路報名 https://reurl.cc/0KQbm6
 王先生 0936733395
 附註：會後將贈送黃鋡醫生製作禮物一份
-海報設計：林犀設計工作室`},{id:`3`,title:`協奏樂未央`,type:`performance`,date:`2025-05-29`,time:`19:30`,location:`高師演藝廳`,description:`高雄炎暑，端午將至。
+海報設計：林犀設計工作室`},{id:`3`,title:`協奏樂未央`,link:null,type:`performance`,date:`2025-05-29`,time:`19:30`,location:`高師演藝廳`,description:`高雄炎暑，端午將至。
 各位樂集的朋友們還記得
 3月28日由樂集主辦的協奏甄選會嗎？
 我們將於5/29（四）
