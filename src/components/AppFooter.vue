@@ -16,7 +16,10 @@
           <a class="text-white" href="https://www.facebook.com/weiyangsizhule">
             <i class="bi bi-facebook me-1"></i>Facebook
           </a>
-          <a class="text-white" href="https://www.youtube.com/@weiyangsizhule">
+          <a
+            class="text-white"
+            href="https://www.youtube.com/@weiyangsizhule666"
+          >
             <i class="bi bi-youtube me-1"></i>Youtube
           </a>
         </div>
