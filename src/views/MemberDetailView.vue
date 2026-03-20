@@ -107,7 +107,7 @@ export default {
 
     handleImageError(e) {
       if (this.member) {
-        e.target.src = `https://pbs.twimg.com/media/GBtW3HCacAAwykB.jpg`;
+        e.target.src = `${import.meta.env.BASE_URL}weiyang_logo.png`;
       }
     },
   },
