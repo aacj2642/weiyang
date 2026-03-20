@@ -70,7 +70,7 @@
       <div class="col-12 text-center text-white">
         <div class="border-top border-white border-opacity-10 pt-5 mb-4 max-w-lg mx-auto d-inline-block w-75"></div>
         <p class="mb-4 opacity-75">想查看更多精彩演出？歡迎訂閱我們的 YouTube 頻道</p>
-        <a href="https://www.youtube.com/@weiyangsizhule666" target="_blank"
+        <a href="https://www.youtube.com/@weiyangsizhule666?sub_confirmation=1" target="_blank"
           class="btn btn-outline-light rounded-pill px-5 py-3 subscribe-btn">
           <i class="bi bi-youtube me-2"></i>前往 YouTube 頻道
         </a>
