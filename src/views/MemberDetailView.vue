@@ -45,7 +45,7 @@
             >
           </div>
           <h4 class="mb-4 member-role-text text-white-50">{{ member.role }}</h4>
-          <p class="lh-lg my-4" style="white-space: pre-line">
+          <p class="lh-lg my-4 text-start" style="white-space: pre-line">
             {{ member.description }}
           </p>
           <button
