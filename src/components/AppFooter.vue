@@ -10,13 +10,29 @@
         <div
           class="d-flex flex-column align-items-md-start align-items-center order-2 order-md-0"
         >
-          <a class="text-white" href="mailto: weiyangsizhule@gmail.com">
+          <a
+            target="_blank"
+            class="text-white"
+            href="mailto: weiyangsizhule@gmail.com"
+          >
             <i class="bi bi-envelope-fill me-1"></i>weiyangsizhule@gmail.com
           </a>
-          <a class="text-white" href="https://www.facebook.com/weiyangsizhule">
+          <a
+            target="_blank"
+            class="text-white"
+            href="https://www.facebook.com/weiyangsizhule"
+          >
             <i class="bi bi-facebook me-1"></i>Facebook
           </a>
           <a
+            target="_blank"
+            class="text-white"
+            href="https://www.instagram.com/weiyangsizhule"
+          >
+            <i class="bi bi-instagram me-1"></i>Instagram
+          </a>
+          <a
+            target="_blank"
             class="text-white"
             href="https://www.youtube.com/@weiyangsizhule666"
           >
