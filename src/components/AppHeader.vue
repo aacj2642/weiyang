@@ -49,6 +49,7 @@ export default {
           children: [
             { title: "樂集介紹", path: "/about" },
             { title: "成員介紹", path: "/member" },
+            { title: "受補助之演出", path: "/sponsored-performances" },
           ],
         },
         {

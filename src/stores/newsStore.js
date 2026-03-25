@@ -418,6 +418,8 @@ Flame Bug 火焰蟲
       getters.news.filter((item) => item.type === "performance"),
     seminarNews: (getters) =>
       getters.news.filter((item) => item.type === "seminar"),
+    sponsoredNews: (getters) => 
+      getters.news.filter((item) => item.sponser),
     getNewsById: (getters) => (id) =>
       getters.news.find((item) => item.id === String(id)),
   },
