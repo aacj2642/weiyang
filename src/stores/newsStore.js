@@ -329,10 +329,12 @@ Flame Bug 火焰蟲
   }),
   getters: {
     news: (state) => {
-      return state.rawNews.map((item) => ({
-        ...item,
-        image: `${import.meta.env.BASE_URL}performence/${item.id}.jpg`,
-      }));
+      return state.rawNews
+        .map((item) => ({
+          ...item,
+          image: `${import.meta.env.BASE_URL}performence/${item.id}.jpg`,
+        }))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
     },
     allNews: (getters) => getters.news,
     performanceNews: (getters) =>
