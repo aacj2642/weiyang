@@ -2,7 +2,9 @@
   <div class="calendar-view">
     <div class="row mb-3">
       <div class="col-12 text-center">
-        <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
+        <div
+          class="section-title-wrapper d-inline-flex flex-column align-items-center"
+        >
           <h2 class="display-4 fw-bold text-white mb-2 category-title">
             活動行事曆
           </h2>
@@ -20,34 +22,63 @@
         <div class="calendar-header">
           <div class="calendar-header-left">
             <div class="d-flex align-items-center gap-3">
-              <button @click="prev" class="calendar-nav-btn" :disabled="isPrevDisabled">
+              <button
+                @click="prev"
+                class="calendar-nav-btn"
+                :disabled="isPrevDisabled"
+              >
                 <i class="bi bi-chevron-left"></i>
               </button>
-              <h3 class="m-0 text-white fw-bold serif-title title-container"
-                style="min-width: 150px; text-align: center">
+              <h3
+                class="m-0 text-white fw-bold serif-title title-container"
+                style="min-width: 150px; text-align: center"
+              >
                 <template v-if="viewMode === 'month'">
                   <span>{{ currentYear }} 年 </span>
-                  <span class="d-block d-sm-inline ms-sm-1">{{ currentMonth + 1 }} 月 </span>
+                  <span class="d-block d-sm-inline ms-sm-1"
+                    >{{ currentMonth + 1 }} 月
+                  </span>
                 </template>
                 <template v-else>
                   <span>{{ currentYear }} 年 </span>
                 </template>
               </h3>
-              <button @click="next" class="calendar-nav-btn" :disabled="isNextDisabled">
+              <button
+                @click="next"
+                class="calendar-nav-btn"
+                :disabled="isNextDisabled"
+              >
                 <i class="bi bi-chevron-right"></i>
               </button>
             </div>
-            <button @click="goToToday" class="btn btn-outline-light btn-sm rounded-pill px-3 today-btn">
+            <button
+              @click="goToToday"
+              class="btn btn-outline-light btn-sm rounded-pill px-3 today-btn"
+            >
               今天
             </button>
           </div>
 
           <div class="calendar-header-right d-none d-sm-block">
             <div class="btn-group" role="group">
-              <input type="radio" class="btn-check" name="viewMode" id="monthView" value="month" v-model="viewMode" />
+              <input
+                type="radio"
+                class="btn-check"
+                name="viewMode"
+                id="monthView"
+                value="month"
+                v-model="viewMode"
+              />
               <label class="btn custom-view-toggle" for="monthView">月</label>
 
-              <input type="radio" class="btn-check" name="viewMode" id="yearView" value="year" v-model="viewMode" />
+              <input
+                type="radio"
+                class="btn-check"
+                name="viewMode"
+                id="yearView"
+                value="year"
+                v-model="viewMode"
+              />
               <label class="btn custom-view-toggle" for="yearView">年</label>
             </div>
           </div>
@@ -62,21 +93,35 @@
             </div>
 
             <!-- Days -->
-            <div v-for="(day, index) in calendarDays" :key="index" class="calendar-day" :class="{
-              'other-month': !day.isCurrentMonth,
-              'is-today': day.isToday,
-            }">
-              <div class="d-flex justify-content-between align-items-start mb-2">
+            <div
+              v-for="(day, index) in calendarDays"
+              :key="index"
+              class="calendar-day"
+              :class="{
+                'other-month': !day.isCurrentMonth,
+                'is-today': day.isToday,
+              }"
+            >
+              <div
+                class="d-flex justify-content-between align-items-start mb-2"
+              >
                 <span class="day-number">{{ day.dayNumber }}</span>
               </div>
 
               <!-- Events -->
               <div class="events-container d-flex flex-column gap-1">
-                <RouterLink v-for="event in day.events" :key="event.id" :to="'/news/' + event.id" class="event-badge"
-                  :class="event.type === 'performance'
-                    ? 'event-performance'
-                    : 'event-seminar'
-                    " :title="`${getEventTypeLabel(event.type)}-${event.title}`">
+                <RouterLink
+                  v-for="event in day.events"
+                  :key="event.id"
+                  :to="'/news/' + event.id"
+                  class="event-badge"
+                  :class="
+                    event.type === 'performance'
+                      ? 'event-performance'
+                      : 'event-seminar'
+                  "
+                  :title="`${getEventTypeLabel(event.type)}-${event.title}`"
+                >
                   {{ event.time.split("-")[0] }} {{ event.title }}
                 </RouterLink>
               </div>
@@ -87,23 +132,53 @@
         <!-- Year View -->
         <div v-if="viewMode === 'year'" class="year-view-wrapper">
           <div class="year-grid">
-            <div v-for="monthItem in yearMonths" :key="monthItem.monthNumber" class="month-card"
-              :class="{ 'has-events': monthItem.events.length > 0, 'disabled': isMonthDisabled(monthItem.monthNumber - 1) }" @click="selectMonth(monthItem.monthNumber - 1)">
-              <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-white-10 pb-2">
+            <div
+              v-for="monthItem in yearMonths"
+              :key="monthItem.monthNumber"
+              class="month-card"
+              :class="{
+                'has-events': monthItem.events.length > 0,
+                disabled: isMonthDisabled(monthItem.monthNumber - 1),
+              }"
+              @click="selectMonth(monthItem.monthNumber - 1)"
+            >
+              <div
+                class="d-flex justify-content-between align-items-center mb-3 border-bottom border-white-10 pb-2"
+              >
                 <h4 class="month-card-title m-0">{{ monthItem.monthName }}</h4>
-                <span v-if="monthItem.events.length > 0" class="badge bg-primary rounded-pill">
+                <span
+                  v-if="monthItem.events.length > 0"
+                  class="badge bg-primary rounded-pill"
+                >
                   {{ monthItem.events.length }} 則活動
                 </span>
               </div>
 
-              <div v-if="monthItem.events.length > 0" class="month-events-preview d-flex flex-column gap-1 mt-2">
-                <RouterLink v-for="event in monthItem.events.slice(0, 3)" :key="event.id" :to="'/news/' + event.id" class="event-badge"
-                  :class="event.type === 'performance' ? 'event-performance' : 'event-seminar'"
+              <div
+                v-if="monthItem.events.length > 0"
+                class="month-events-preview d-flex flex-column gap-1 mt-2"
+              >
+                <RouterLink
+                  v-for="event in monthItem.events.slice(0, 3)"
+                  :key="event.id"
+                  :to="'/news/' + event.id"
+                  class="event-badge"
+                  :class="
+                    event.type === 'performance'
+                      ? 'event-performance'
+                      : 'event-seminar'
+                  "
                   :title="`${getEventTypeLabel(event.type)}-${event.title}`"
-                  @click.stop>
-                  {{ event.time ? event.time.split("-")[0] : '' }} {{ event.title }}
+                  @click.stop
+                >
+                  {{ event.date.split("-")[1] }}/{{ event.date.split("-")[2] }}
+                  {{ event.time ? event.time.split("-")[0] : "" }}
+                  {{ event.title }}
                 </RouterLink>
-                <div v-if="monthItem.events.length > 3" class="text-white-50 small fst-italic mt-1 text-center">
+                <div
+                  v-if="monthItem.events.length > 3"
+                  class="text-white-50 small fst-italic mt-1 text-center"
+                >
                   ...及其他 {{ monthItem.events.length - 3 }} 則活動
                 </div>
               </div>
@@ -132,10 +207,14 @@ export default {
     const allNews = computed(() => newsStore.allNews);
 
     const minDateInfo = computed(() => {
-      if (!allNews.value || allNews.value.length === 0) return { year: new Date().getFullYear(), month: 0 };
-      const dates = allNews.value.map(news => new Date(news.date)).filter(d => !isNaN(d.getTime()));
-      if (dates.length === 0) return { year: new Date().getFullYear(), month: 0 };
-      const minMs = Math.min(...dates.map(d => d.getTime()));
+      if (!allNews.value || allNews.value.length === 0)
+        return { year: new Date().getFullYear(), month: 0 };
+      const dates = allNews.value
+        .map((news) => new Date(news.date))
+        .filter((d) => !isNaN(d.getTime()));
+      if (dates.length === 0)
+        return { year: new Date().getFullYear(), month: 0 };
+      const minMs = Math.min(...dates.map((d) => d.getTime()));
       const minDate = new Date(minMs);
       return { year: minDate.getFullYear(), month: minDate.getMonth() };
     });
@@ -144,7 +223,11 @@ export default {
       const minInfo = minDateInfo.value;
       if (viewMode.value === "month") {
         if (currentYear.value < minInfo.year) return true;
-        if (currentYear.value === minInfo.year && currentMonth.value <= minInfo.month) return true;
+        if (
+          currentYear.value === minInfo.year &&
+          currentMonth.value <= minInfo.month
+        )
+          return true;
         return false;
       } else {
         return currentYear.value <= minInfo.year;
@@ -153,10 +236,14 @@ export default {
 
     const maxDateInfo = computed(() => {
       const now = new Date();
-      if (!allNews.value || allNews.value.length === 0) return { year: now.getFullYear(), month: now.getMonth() };
-      const dates = allNews.value.map(news => new Date(news.date)).filter(d => !isNaN(d.getTime()));
-      if (dates.length === 0) return { year: now.getFullYear(), month: now.getMonth() };
-      const maxMs = Math.max(now.getTime(), ...dates.map(d => d.getTime()));
+      if (!allNews.value || allNews.value.length === 0)
+        return { year: now.getFullYear(), month: now.getMonth() };
+      const dates = allNews.value
+        .map((news) => new Date(news.date))
+        .filter((d) => !isNaN(d.getTime()));
+      if (dates.length === 0)
+        return { year: now.getFullYear(), month: now.getMonth() };
+      const maxMs = Math.max(now.getTime(), ...dates.map((d) => d.getTime()));
       const maxDate = new Date(maxMs);
       return { year: maxDate.getFullYear(), month: maxDate.getMonth() };
     });
@@ -165,7 +252,11 @@ export default {
       const maxInfo = maxDateInfo.value;
       if (viewMode.value === "month") {
         if (currentYear.value > maxInfo.year) return true;
-        if (currentYear.value === maxInfo.year && currentMonth.value >= maxInfo.month) return true;
+        if (
+          currentYear.value === maxInfo.year &&
+          currentMonth.value >= maxInfo.month
+        )
+          return true;
         return false;
       } else {
         return currentYear.value >= maxInfo.year;
@@ -178,7 +269,8 @@ export default {
     const currentYear = computed(() => currentDate.value.getFullYear());
     const currentMonth = computed(() => currentDate.value.getMonth());
 
-    let lastIsMobile = typeof window !== 'undefined' ? window.innerWidth < 576 : false;
+    let lastIsMobile =
+      typeof window !== "undefined" ? window.innerWidth < 576 : false;
 
     const handleResize = () => {
       const isMobile = window.innerWidth < 576;
@@ -319,9 +411,17 @@ export default {
       const targetYear = currentYear.value;
       const minInfo = minDateInfo.value;
       const maxInfo = maxDateInfo.value;
-      
-      if (targetYear < minInfo.year || (targetYear === minInfo.year && monthIndex < minInfo.month)) return true;
-      if (targetYear > maxInfo.year || (targetYear === maxInfo.year && monthIndex > maxInfo.month)) return true;
+
+      if (
+        targetYear < minInfo.year ||
+        (targetYear === minInfo.year && monthIndex < minInfo.month)
+      )
+        return true;
+      if (
+        targetYear > maxInfo.year ||
+        (targetYear === maxInfo.year && monthIndex > maxInfo.month)
+      )
+        return true;
       return false;
     }
 
@@ -336,24 +436,24 @@ export default {
       }
     }
 
-      return {
-        viewMode,
-        currentYear,
-        currentMonth,
-        weekdays,
-        calendarDays,
-        yearMonths,
-        next,
-        prev,
-        goToToday,
-        selectMonth,
-        isMonthDisabled,
-        getEventTypeLabel,
-        isPrevDisabled,
-        isNextDisabled,
-      };
-    },
-  };
+    return {
+      viewMode,
+      currentYear,
+      currentMonth,
+      weekdays,
+      calendarDays,
+      yearMonths,
+      next,
+      prev,
+      goToToday,
+      selectMonth,
+      isMonthDisabled,
+      getEventTypeLabel,
+      isPrevDisabled,
+      isNextDisabled,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -465,7 +565,7 @@ export default {
   }
 }
 
-.btn-check:checked+.custom-view-toggle {
+.btn-check:checked + .custom-view-toggle {
   color: #fff;
   background-color: var(--bs-primary);
   border-color: var(--bs-primary);
