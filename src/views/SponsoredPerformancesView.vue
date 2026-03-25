@@ -1,6 +1,6 @@
 <template>
-  <div class="sponsored-performances-view pt-5 pb-5">
-    <div class="row mb-5 mt-4">
+  <div class="sponsored-performances-view">
+    <div class="row mb-5">
       <div class="col-12 text-center">
         <div
           class="section-title-wrapper d-inline-flex flex-column align-items-center"
@@ -9,6 +9,9 @@
             受補助之演出
           </h2>
           <div class="title-underline"></div>
+          <p class="text-white-50 mt-3 letter-spacing-wide">
+            SPONSORED PERFORMANCES
+          </p>
         </div>
       </div>
     </div>
@@ -142,14 +145,16 @@ export default {
 
 <style lang="scss" scoped>
 .sponsored-performances-view {
-  background-color: #0c0f12; // Project dark theme base
-  min-height: 100vh;
   animation: fadeIn 0.8s ease-out;
 }
 
 .category-title {
   letter-spacing: 0.3rem;
   font-family: serif;
+}
+
+.letter-spacing-wide {
+  letter-spacing: 0.25em;
 }
 
 .title-underline {
