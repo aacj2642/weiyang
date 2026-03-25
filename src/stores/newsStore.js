@@ -55,6 +55,7 @@ export const useNewsStore = defineStore("news", {
       {
         id: "3",
         title: "【南國樂未央——謳歌台灣】",
+        sponser: "高雄市文化局",
         link: null,
         type: "performance",
         date: "2023-09-17",
@@ -103,6 +104,7 @@ export const useNewsStore = defineStore("news", {
       {
         id: "5",
         title: "【南國樂未央——樂說霹靂】",
+        sponser: "高雄市文化局",
         link: null,
         type: "performance",
         date: "2023-10-28",
@@ -178,6 +180,7 @@ https://www.opentix.life/event/1787384124700848128
       {
         id: "8",
         title: "【紅樓夢•樂（參）——林黛玉與薛寶釵】",
+        sponser: "高雄市文化局",
         link: "https://www.opentix.life/event/1787384124700848128",
         type: "performance",
         date: "2024-06-08",
@@ -300,6 +303,7 @@ https://www.opentix.life/event/1787384124700848128
       {
         id: "12",
         title: "屏緣—陳睿霆作品發表會",
+        sponser: "高雄市文化局",
         link: "https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k",
         type: "performance",
         date: "2025-08-15",
