@@ -27,7 +27,7 @@ export const useNewsStore = defineStore("news", {
       {
         id: "2",
         title: "【品味三國--空城與古琴】",
-        link: "https://www.facebook.com/profile.php?id=100088838873046",
+        link: null,
         type: "seminar",
         date: "2023-04-15",
         time: "15:00",
@@ -50,8 +50,7 @@ export const useNewsStore = defineStore("news", {
 演出時間：4/15(六)15:00-17:00
 演出地點：長安古琴館
 （高雄市前金區民生二路165號2樓）
-海報設計：林犀設計工作室
-https://www.facebook.com/profile.php?id=100088838873046`,
+海報設計：林犀設計工作室`,
       },
       {
         id: "3",
@@ -79,7 +78,7 @@ https://www.facebook.com/profile.php?id=100088838873046`,
       {
         id: "4",
         title: "【紅樓夢•樂（貳）——機關算盡王熙鳳】",
-        link: "https://reurl.cc/q0LdaD",
+        link: null,
         type: "seminar",
         date: "2023-10-15",
         time: "14:30",
@@ -98,15 +97,13 @@ https://www.facebook.com/profile.php?id=100088838873046`,
 為本場音樂會創作、講解樂曲，
 歡迎各位舊雨新知一同
 與我們共享音樂與文學之美。
-報名網址：
-https://reurl.cc/q0LdaD
 未央樂集期待與您相見。
 海報設計：林犀設計工作室`,
       },
       {
         id: "5",
         title: "【南國樂未央——樂說霹靂】",
-        link: "https://reurl.cc/V4mXWQ",
+        link: null,
         type: "performance",
         date: "2023-10-28",
         time: "14:00",
@@ -123,7 +120,6 @@ https://reurl.cc/q0LdaD
 請喜愛音樂以及布袋戲的朋友千萬不能錯過。
 預購票：400
 現場票：500
-購票連結：https://reurl.cc/V4mXWQ
 期待與您度過美好的午後。`,
       },
       {
@@ -156,7 +152,7 @@ https://reurl.cc/q0LdaD
       {
         id: "7",
         title: "【紅樓夢•樂（參）——林黛玉與薛寶釵】",
-        link: "https://reurl.cc/vaW8Wj",
+        link: null,
         type: "seminar",
         date: "2024-05-26",
         time: "14:30",
@@ -173,8 +169,7 @@ https://reurl.cc/q0LdaD
 1.5/26(日)下午2:30-4:30於長安古琴館，主要講解紅樓夢中林黛玉與薛寶釵的人物形象及故事裡兩人的人際應對，以及對我們人生的哲理反思。
 2.6/8(六)晚上7:30-9:30於高雄市音樂館。本場次以紅樓夢音樂為主，將用音樂把紅樓中的賈寶玉、林黛玉、薛寶釵、王熙鳳等等人物形象一一勾勒。演出邀請高醫大李玲珠副教授講解，更委託本團作曲家顏荻峻與陳睿霆全新創作林黛玉與薛寶釵的曲子。
 期待音樂與文學的結合能增進經典文化的推廣與個人涵養之成長。
-5/26(日)報名網址：
-https://reurl.cc/vaW8Wj
+5/26(日): 講座
 6/8(六)售票網址：
 https://www.opentix.life/event/1787384124700848128
 未央樂集期待與您相見。
@@ -210,7 +205,7 @@ https://www.opentix.life/event/1787384124700848128
       {
         id: "9",
         title: "【未央練功坊——中式擊樂· 鑼/鈸/鼓】",
-        link: "https://reurl.cc/qvKbjE",
+        link: null,
         type: "seminar",
         date: "2024-10-19",
         time: "13:30",
@@ -227,8 +222,7 @@ https://www.opentix.life/event/1787384124700848128
 報名專線｜(07)2711428
 講座地點｜高雄長安古琴館
 協辦單位｜高雄長安樂器行 
-海報設計｜徐丹蓉
-點我報名🔗｜https://reurl.cc/qvKbjE`,
+海報設計｜徐丹蓉`,
       },
       {
         id: "10",
@@ -277,7 +271,7 @@ https://www.opentix.life/event/1787384124700848128
       {
         id: "11",
         title: "品味三國--空城與古琴（貳）",
-        link: "https://reurl.cc/0KQbm6",
+        link: null,
         type: "seminar",
         date: "2025-06-29",
         time: "14:30-16:30",
@@ -298,7 +292,7 @@ https://www.opentix.life/event/1787384124700848128
 演出時間：6/29（日）14:30-16:30
 演出地點：大東文化中心2樓演講廳
 報名費：700元/1人、學生價300元/1人
-報名方式：網路報名 https://reurl.cc/0KQbm6
+報名方式：網路報名
 王先生 0936733395
 附註：會後將贈送黃鋡醫生製作禮物一份
 海報設計：林犀設計工作室`,
