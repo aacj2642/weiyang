@@ -1,4 +1,4 @@
-import{i as e}from"./index-78O7eyyy.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`【紅樓夢‧樂】`,link:null,type:`seminar`,date:`2022-11-27`,time:`14:30`,location:`高雄長安古琴館`,description:`【紅樓夢‧樂】
+import{i as e}from"./index-CA_FdoId.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`【紅樓夢‧樂】`,link:null,type:`seminar`,date:`2022-11-27`,time:`14:30`,location:`高雄長安古琴館`,description:`【紅樓夢‧樂】
 滿紙荒唐言，一把辛酸淚。
 都云作者癡，誰解其中味。
 曹雪芹《紅樓夢》是高中職國文課的選文，
