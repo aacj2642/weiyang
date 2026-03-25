@@ -20,7 +20,7 @@
         <div class="calendar-header">
           <div class="calendar-header-left">
             <div class="d-flex align-items-center gap-3">
-              <button @click="prev" class="calendar-nav-btn">
+              <button @click="prev" class="calendar-nav-btn" :disabled="isPrevDisabled">
                 <i class="bi bi-chevron-left"></i>
               </button>
               <h3 class="m-0 text-white fw-bold serif-title title-container"
@@ -33,7 +33,7 @@
                   <span>{{ currentYear }} 年 </span>
                 </template>
               </h3>
-              <button @click="next" class="calendar-nav-btn">
+              <button @click="next" class="calendar-nav-btn" :disabled="isNextDisabled">
                 <i class="bi bi-chevron-right"></i>
               </button>
             </div>
@@ -88,7 +88,7 @@
         <div v-if="viewMode === 'year'" class="year-view-wrapper">
           <div class="year-grid">
             <div v-for="monthItem in yearMonths" :key="monthItem.monthNumber" class="month-card"
-              :class="{ 'has-events': monthItem.events.length > 0 }" @click="selectMonth(monthItem.monthNumber - 1)">
+              :class="{ 'has-events': monthItem.events.length > 0, 'disabled': isMonthDisabled(monthItem.monthNumber - 1) }" @click="selectMonth(monthItem.monthNumber - 1)">
               <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-white-10 pb-2">
                 <h4 class="month-card-title m-0">{{ monthItem.monthName }}</h4>
                 <span v-if="monthItem.events.length > 0" class="badge bg-primary rounded-pill">
@@ -130,6 +130,47 @@ export default {
   setup() {
     const newsStore = useNewsStore();
     const allNews = computed(() => newsStore.allNews);
+
+    const minDateInfo = computed(() => {
+      if (!allNews.value || allNews.value.length === 0) return { year: new Date().getFullYear(), month: 0 };
+      const dates = allNews.value.map(news => new Date(news.date)).filter(d => !isNaN(d.getTime()));
+      if (dates.length === 0) return { year: new Date().getFullYear(), month: 0 };
+      const minMs = Math.min(...dates.map(d => d.getTime()));
+      const minDate = new Date(minMs);
+      return { year: minDate.getFullYear(), month: minDate.getMonth() };
+    });
+
+    const isPrevDisabled = computed(() => {
+      const minInfo = minDateInfo.value;
+      if (viewMode.value === "month") {
+        if (currentYear.value < minInfo.year) return true;
+        if (currentYear.value === minInfo.year && currentMonth.value <= minInfo.month) return true;
+        return false;
+      } else {
+        return currentYear.value <= minInfo.year;
+      }
+    });
+
+    const maxDateInfo = computed(() => {
+      const now = new Date();
+      if (!allNews.value || allNews.value.length === 0) return { year: now.getFullYear(), month: now.getMonth() };
+      const dates = allNews.value.map(news => new Date(news.date)).filter(d => !isNaN(d.getTime()));
+      if (dates.length === 0) return { year: now.getFullYear(), month: now.getMonth() };
+      const maxMs = Math.max(now.getTime(), ...dates.map(d => d.getTime()));
+      const maxDate = new Date(maxMs);
+      return { year: maxDate.getFullYear(), month: maxDate.getMonth() };
+    });
+
+    const isNextDisabled = computed(() => {
+      const maxInfo = maxDateInfo.value;
+      if (viewMode.value === "month") {
+        if (currentYear.value > maxInfo.year) return true;
+        if (currentYear.value === maxInfo.year && currentMonth.value >= maxInfo.month) return true;
+        return false;
+      } else {
+        return currentYear.value >= maxInfo.year;
+      }
+    });
 
     const viewMode = sharedViewMode;
     const currentDate = sharedCurrentDate;
@@ -230,6 +271,7 @@ export default {
     }
 
     function next() {
+      if (isNextDisabled.value) return;
       if (viewMode.value === "month") {
         currentDate.value = new Date(
           currentYear.value,
@@ -246,6 +288,7 @@ export default {
     }
 
     function prev() {
+      if (isPrevDisabled.value) return;
       if (viewMode.value === "month") {
         currentDate.value = new Date(
           currentYear.value,
@@ -267,8 +310,19 @@ export default {
     }
 
     function selectMonth(monthIndex) {
+      if (isMonthDisabled(monthIndex)) return;
       currentDate.value = new Date(currentYear.value, monthIndex, 1);
       viewMode.value = "month";
+    }
+
+    function isMonthDisabled(monthIndex) {
+      const targetYear = currentYear.value;
+      const minInfo = minDateInfo.value;
+      const maxInfo = maxDateInfo.value;
+      
+      if (targetYear < minInfo.year || (targetYear === minInfo.year && monthIndex < minInfo.month)) return true;
+      if (targetYear > maxInfo.year || (targetYear === maxInfo.year && monthIndex > maxInfo.month)) return true;
+      return false;
     }
 
     function getEventTypeLabel(type) {
@@ -282,21 +336,24 @@ export default {
       }
     }
 
-    return {
-      viewMode,
-      currentYear,
-      currentMonth,
-      weekdays,
-      calendarDays,
-      yearMonths,
-      next,
-      prev,
-      goToToday,
-      selectMonth,
-      getEventTypeLabel,
-    };
-  },
-};
+      return {
+        viewMode,
+        currentYear,
+        currentMonth,
+        weekdays,
+        calendarDays,
+        yearMonths,
+        next,
+        prev,
+        goToToday,
+        selectMonth,
+        isMonthDisabled,
+        getEventTypeLabel,
+        isPrevDisabled,
+        isNextDisabled,
+      };
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
@@ -387,8 +444,13 @@ export default {
   justify-content: center;
   transition: all 0.3s;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 }
 
@@ -539,6 +601,11 @@ export default {
     &:hover {
       background-color: rgba(var(--bs-primary-rgb), 0.1);
     }
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
 
