@@ -2,8 +2,12 @@
   <div class="sponsored-performances-view pt-5 pb-5">
     <div class="row mb-5 mt-4">
       <div class="col-12 text-center">
-        <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
-          <h2 class="display-4 fw-bold text-white mb-2 category-title">受補助之演出</h2>
+        <div
+          class="section-title-wrapper d-inline-flex flex-column align-items-center"
+        >
+          <h2 class="display-4 fw-bold text-white mb-2 category-title">
+            受補助之演出
+          </h2>
           <div class="title-underline"></div>
         </div>
       </div>
@@ -12,43 +16,85 @@
     <div class="container pb-5">
       <div class="row g-4">
         <div v-for="item in sponsoredNews" :key="item.id" class="col-12">
-          
-          <!-- 橫式排版 (md and up) -->
-          <div class="sponsored-card d-none d-md-flex row g-0 overflow-hidden align-items-center light-theme-card">
-            <div class="col-md-7 p-4 p-lg-5 info-section">
-              <h3 class="card-title fw-bold mb-4">【{{ item.title.replace(/【|】/g, '') }}】</h3>
-              <p class="mb-2 info-text"><span class="info-label me-2">日期:</span> {{ formatDate(item.date) }}</p>
-              <p class="mb-2 info-text" v-if="item.time"><span class="info-label me-2">時間:</span> {{ item.time }}</p>
-              <p class="mb-2 info-text" v-if="item.location"><span class="info-label me-2">地點:</span> {{ item.location }}</p>
-              <p class="mb-0 info-text" v-if="item.sponser"><span class="info-label me-2">補助單位:</span> {{ item.sponser }}</p>
-            </div>
-            <div class="col-md-5 img-section p-4">
-              <div class="img-wrapper">
-                <img :src="item.image" :alt="item.title" class="img-fluid rounded sponsored-image" @error="handleImageError">
+          <RouterLink
+            :to="'/news/' + item.id"
+            class="text-decoration-none d-block"
+          >
+            <!-- 橫式排版 (md and up) -->
+            <div
+              class="sponsored-card d-none d-md-flex row g-0 overflow-hidden align-items-center bg-dark-soft"
+            >
+              <div class="col-md-7 p-4 p-lg-5 info-section text-white">
+                <h3 class="card-title fw-bold mb-4">
+                  【{{ item.title.replace(/【|】/g, "") }}】
+                </h3>
+                <p class="mb-2 info-text">
+                  <span class="info-label me-2">日期:</span>
+                  {{ formatDate(item.date) }}
+                </p>
+                <p class="mb-2 info-text" v-if="item.time">
+                  <span class="info-label me-2">時間:</span> {{ item.time }}
+                </p>
+                <p class="mb-2 info-text" v-if="item.location">
+                  <span class="info-label me-2">地點:</span> {{ item.location }}
+                </p>
+                <p class="mb-0 info-text" v-if="item.sponsor">
+                  <span class="info-label me-2">補助單位:</span>
+                  {{ item.sponsor }}
+                </p>
+              </div>
+              <div class="col-md-5 img-section p-4">
+                <div class="img-wrapper">
+                  <img
+                    :src="item.image"
+                    :alt="item.title"
+                    class="img-fluid rounded sponsored-image"
+                    @error="handleImageError"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          
-          <!-- 直式排版 (below md) -->
-          <div class="sponsored-card d-md-none overflow-hidden light-theme-card">
-            <div class="p-4 info-section">
-              <h3 class="card-title fw-bold mb-4">【{{ item.title.replace(/【|】/g, '') }}】</h3>
-              <p class="mb-2 info-text"><span class="info-label me-2">日期:</span> {{ formatDate(item.date) }}</p>
-              <p class="mb-2 info-text" v-if="item.time"><span class="info-label me-2">時間:</span> {{ item.time }}</p>
-              <p class="mb-2 info-text" v-if="item.location"><span class="info-label me-2">地點:</span> {{ item.location }}</p>
-              <p class="mb-0 info-text" v-if="item.sponser"><span class="info-label me-2">補助單位:</span> {{ item.sponser }}</p>
-            </div>
-            <div class="img-section p-4 pt-0">
-              <div class="img-wrapper">
-                <img :src="item.image" :alt="item.title" class="img-fluid rounded w-100 sponsored-image" @error="handleImageError">
-              </div>
-            </div>
-          </div>
 
+            <!-- 直式排版 (below md) -->
+            <div class="sponsored-card d-md-none overflow-hidden bg-dark-soft">
+              <div class="p-4 info-section text-white">
+                <h3 class="card-title fw-bold mb-4">
+                  【{{ item.title.replace(/【|】/g, "") }}】
+                </h3>
+                <p class="mb-2 info-text">
+                  <span class="info-label me-2">日期:</span>
+                  {{ formatDate(item.date) }}
+                </p>
+                <p class="mb-2 info-text" v-if="item.time">
+                  <span class="info-label me-2">時間:</span> {{ item.time }}
+                </p>
+                <p class="mb-2 info-text" v-if="item.location">
+                  <span class="info-label me-2">地點:</span> {{ item.location }}
+                </p>
+                <p class="mb-0 info-text" v-if="item.sponsor">
+                  <span class="info-label me-2">補助單位:</span>
+                  {{ item.sponsor }}
+                </p>
+              </div>
+              <div class="img-section p-4 pt-0">
+                <div class="img-wrapper">
+                  <img
+                    :src="item.image"
+                    :alt="item.title"
+                    class="img-fluid rounded w-100 sponsored-image"
+                    @error="handleImageError"
+                  />
+                </div>
+              </div>
+            </div>
+          </RouterLink>
         </div>
       </div>
-      
-      <div v-if="sponsoredNews.length === 0" class="text-center py-5 text-white-50">
+
+      <div
+        v-if="sponsoredNews.length === 0"
+        class="text-center py-5 text-white-50"
+      >
         <p>目前尚無相關訊息</p>
       </div>
     </div>
@@ -113,20 +159,19 @@ export default {
   margin-top: 1rem;
 }
 
-/* Light Theme Card matching the screenshot */
-.light-theme-card {
-  background-color: #e4ebe9; /* Light grey-green bg from screenshot */
+.bg-dark-soft {
+  background-color: #1a1e23;
   border-radius: 20px;
-  color: #2b333e; /* Dark slate text color */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+
     .img-wrapper img {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 }
@@ -134,18 +179,17 @@ export default {
 .card-title {
   font-family: "Noto Sans TC", sans-serif;
   font-size: 1.8rem;
-  color: #1a222c;
   margin-left: -0.5rem; /* Offset for the brackets */
 }
 
 .info-text {
   font-size: 1.1rem;
-  font-family: 'Outfit', "Noto Sans TC", sans-serif;
-  color: #3b4654;
+  font-family: "Outfit", "Noto Sans TC", sans-serif;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .info-label {
-  color: #556270;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .img-wrapper {
