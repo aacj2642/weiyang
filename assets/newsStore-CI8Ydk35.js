@@ -1,4 +1,4 @@
-import{i as e}from"./index-1koOsfKs.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`【紅樓夢‧樂】`,link:null,type:`seminar`,date:`2022-11-27`,time:`14:30`,location:`高雄長安古琴館`,description:`【紅樓夢‧樂】
+import{i as e}from"./index-MbWkeJ7_.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`【紅樓夢‧樂】`,link:null,type:`seminar`,date:`2022-11-27`,time:`14:30`,location:`高雄長安古琴館`,description:`【紅樓夢‧樂】
 滿紙荒唐言，一把辛酸淚。
 都云作者癡，誰解其中味。
 曹雪芹《紅樓夢》是高中職國文課的選文，
@@ -27,7 +27,7 @@ import{i as e}from"./index-1koOsfKs.js";var t=e(`news`,{state:()=>({rawNews:[{id
 演出時間：4/15(六)15:00-17:00
 演出地點：長安古琴館
 （高雄市前金區民生二路165號2樓）
-海報設計：林犀設計工作室`},{id:`3`,title:`【南國樂未央——謳歌台灣】`,link:null,type:`performance`,date:`2023-09-17`,time:`19:00`,location:`駁二．Banana音樂館`,description:`生於斯長於斯，
+海報設計：林犀設計工作室`},{id:`3`,title:`【南國樂未央——謳歌台灣】`,sponsor:`高雄市文化局`,link:null,type:`performance`,date:`2023-09-17`,time:`19:00`,location:`駁二．Banana音樂館`,description:`生於斯長於斯，
 身為台灣人的你
 是否對於台灣的音樂熟悉呢？
 未央樂集將藉由音樂與故事，
@@ -55,7 +55,7 @@ import{i as e}from"./index-1koOsfKs.js";var t=e(`news`,{state:()=>({rawNews:[{id
 歡迎各位舊雨新知一同
 與我們共享音樂與文學之美。
 未央樂集期待與您相見。
-海報設計：林犀設計工作室`},{id:`5`,title:`【南國樂未央——樂說霹靂】`,link:null,type:`performance`,date:`2023-10-28`,time:`14:00`,location:`駁二．Banana音樂館`,description:`各位親愛的觀眾，
+海報設計：林犀設計工作室`},{id:`5`,title:`【南國樂未央——樂說霹靂】`,sponsor:`高雄市文化局`,link:null,type:`performance`,date:`2023-10-28`,time:`14:00`,location:`駁二．Banana音樂館`,description:`各位親愛的觀眾，
 是否還記得9/17(日)晚間與您相遇的美好時刻？
 這次未央樂集將於
 10/28(六)的下午2:00，
@@ -100,7 +100,7 @@ import{i as e}from"./index-1koOsfKs.js";var t=e(`news`,{state:()=>({rawNews:[{id
 6/8(六)售票網址：
 https://www.opentix.life/event/1787384124700848128
 未央樂集期待與您相見。
-海報設計：林犀設計工作室`},{id:`8`,title:`【紅樓夢•樂（參）——林黛玉與薛寶釵】`,link:`https://www.opentix.life/event/1787384124700848128`,type:`performance`,date:`2024-06-08`,time:`19:30`,location:`高雄市音樂館`,description:`都道是「金玉良緣」--寶玉與寶釵
+海報設計：林犀設計工作室`},{id:`8`,title:`【紅樓夢•樂（參）——林黛玉與薛寶釵】`,sponsor:`高雄市文化局`,link:`https://www.opentix.life/event/1787384124700848128`,type:`performance`,date:`2024-06-08`,time:`19:30`,location:`高雄市音樂館`,description:`都道是「金玉良緣」--寶玉與寶釵
 俺只念「木石前盟」--寶玉與黛玉
 愛情的世界裡，也許、就是難兩全！
 紅樓的世界裡，終究是玉帶林中掛、金簪雪裡埋。
@@ -182,7 +182,7 @@ https://www.opentix.life/event/1787384124700848128
 報名方式：網路報名
 王先生 0936733395
 附註：會後將贈送黃鋡醫生製作禮物一份
-海報設計：林犀設計工作室`},{id:`12`,title:`屏緣—陳睿霆作品發表會`,link:`https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
+海報設計：林犀設計工作室`},{id:`12`,title:`屏緣—陳睿霆作品發表會`,sponsor:`高雄市文化局`,link:`https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
 駐團作曲家—陳睿霆的作品發表會
 將用音樂連結其與屏東的緣分
 以其對屏東的緣分與在地故事作為發想
@@ -253,4 +253,4 @@ Flame Bug 火焰蟲
 
 聯絡電話：
 王先生 0936733395
-長安樂器行 (07)2711428`}]}),getters:{news:e=>e.rawNews.map(e=>({...e,image:`/weiyang/performence/${e.id}.jpg`})).sort((e,t)=>new Date(t.date)-new Date(e.date)),allNews:e=>e.news,performanceNews:e=>e.news.filter(e=>e.type===`performance`),seminarNews:e=>e.news.filter(e=>e.type===`seminar`),getNewsById:e=>t=>e.news.find(e=>e.id===String(t))}});export{t};
+長安樂器行 (07)2711428`}]}),getters:{news:e=>e.rawNews.map(e=>({...e,image:`/weiyang/performence/${e.id}.jpg`})).sort((e,t)=>new Date(t.date)-new Date(e.date)),allNews:e=>e.news,performanceNews:e=>e.news.filter(e=>e.type===`performance`),seminarNews:e=>e.news.filter(e=>e.type===`seminar`),sponsoredNews:e=>e.news.filter(e=>e.sponsor),getNewsById:e=>t=>e.news.find(e=>e.id===String(t))}});export{t};
