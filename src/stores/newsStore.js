@@ -306,8 +306,8 @@ https://www.opentix.life/event/1787384124700848128
         sponsor: "高雄市文化局",
         link: "https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k",
         type: "performance",
-        date: "2025-08-15",
-        time: "19:30",
+        date: "2025-11-09",
+        time: "14:30",
         location: "屏東演藝廳",
         description: `本場次為高雄在地樂團〈未央樂集〉
 駐團作曲家—陳睿霆的作品發表會
@@ -418,8 +418,7 @@ Flame Bug 火焰蟲
       getters.news.filter((item) => item.type === "performance"),
     seminarNews: (getters) =>
       getters.news.filter((item) => item.type === "seminar"),
-    sponsoredNews: (getters) => 
-      getters.news.filter((item) => item.sponsor),
+    sponsoredNews: (getters) => getters.news.filter((item) => item.sponsor),
     getNewsById: (getters) => (id) =>
       getters.news.find((item) => item.id === String(id)),
   },
