@@ -1,4 +1,4 @@
-import{i as e}from"./index-CA_FdoId.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`【紅樓夢‧樂】`,link:null,type:`seminar`,date:`2022-11-27`,time:`14:30`,location:`高雄長安古琴館`,description:`【紅樓夢‧樂】
+import{i as e}from"./index-CM2o5Fb7.js";var t=e(`news`,{state:()=>({rawNews:[{id:`1`,title:`【紅樓夢‧樂】`,link:null,type:`seminar`,date:`2022-11-27`,time:`14:30`,location:`高雄長安古琴館`,description:`【紅樓夢‧樂】
 滿紙荒唐言，一把辛酸淚。
 都云作者癡，誰解其中味。
 曹雪芹《紅樓夢》是高中職國文課的選文，
@@ -182,7 +182,7 @@ https://www.opentix.life/event/1787384124700848128
 報名方式：網路報名
 王先生 0936733395
 附註：會後將贈送黃鋡醫生製作禮物一份
-海報設計：林犀設計工作室`},{id:`12`,title:`屏緣—陳睿霆作品發表會`,sponsor:`高雄市文化局`,link:`https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k`,type:`performance`,date:`2025-08-15`,time:`19:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
+海報設計：林犀設計工作室`},{id:`12`,title:`屏緣—陳睿霆作品發表會`,sponsor:`高雄市文化局`,link:`https://www.opentix.life/event/1963481201028403201?srsltid=AfmBOooPkWX9mNMdU0Ng5pOvOGZyf-oZTJ9aO3PjVM2nESBWl3qLCp3k`,type:`performance`,date:`2025-11-09`,time:`14:30`,location:`屏東演藝廳`,description:`本場次為高雄在地樂團〈未央樂集〉
 駐團作曲家—陳睿霆的作品發表會
 將用音樂連結其與屏東的緣分
 以其對屏東的緣分與在地故事作為發想
