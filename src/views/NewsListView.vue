@@ -53,7 +53,7 @@ export default {
 
     const filteredNews = computed(() => {
       const path = route.path;
-      if (path === "/performance-news" || path === "/performence-news") {
+      if (path === "/performance-news" || path === "/performance-news") {
         return newsStore.performanceNews;
       } else if (path === "/seminar-news") {
         return newsStore.seminarNews;
@@ -63,7 +63,7 @@ export default {
 
     const pageTitle = computed(() => {
       const path = route.path;
-      if (path === "/performance-news" || path === "/performence-news") {
+      if (path === "/performance-news" || path === "/performance-news") {
         return "演出訊息";
       } else if (path === "/seminar-news") {
         return "講座訊息";
