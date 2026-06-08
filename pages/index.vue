@@ -3,19 +3,7 @@
     <h1 class="visually-hidden">
       未央樂集 Weiyang Sizhule - 國樂演奏與音樂講座
     </h1>
-    <div
-      class="banner mb-5"
-      style="
-        background-image:
-          linear-gradient(
-            rgba(var(--bs-primary-rgb), 1) 0%,
-            rgba(var(--bs-primary-rgb), 0.7) 20%,
-            rgba(var(--bs-primary-rgb), 0.3) 30%,
-            rgba(var(--bs-primary-rgb), 0) 100%
-          ),
-          url(&quot;/weiyang/group_photo.jpg&quot;);
-      "
-    >
+    <div class="banner mb-5">
       <img
         src="/hero-text.png"
         alt="weiyang"
@@ -118,6 +106,13 @@ export default {
   background-size: cover;
   background-position: center;
   height: 480px;
+  background-image: linear-gradient(
+      rgba(var(--bs-primary-rgb), 1) 0%,
+      rgba(var(--bs-primary-rgb), 0.7) 20%,
+      rgba(var(--bs-primary-rgb), 0.3) 30%,
+      rgba(var(--bs-primary-rgb), 0) 100%
+    ),
+    url('/weiyang/group_photo.jpg');
 
   @media (min-width: map-get($grid-breakpoints, md)) {
     height: 800px;
