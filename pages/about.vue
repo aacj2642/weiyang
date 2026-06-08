@@ -14,20 +14,19 @@
 </template>
 
 <script>
-import AboutSection from "@/components/AboutSection.vue";
+import { useHead } from "#app";
 
 export default {
-  components: {
-    AboutSection,
-  },
-  mounted() {
-    document.title = "關於我們 - 未央樂集";
-  },
+  setup() {
+    useHead({
+      title: "關於我們 - 未央樂集"
+    });
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .about-page {
   background-color: $primary;

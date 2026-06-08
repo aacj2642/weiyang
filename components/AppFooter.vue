@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 
 export default {
   msg: {
@@ -60,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 .contact-info {
   padding: 24px 0;
 }

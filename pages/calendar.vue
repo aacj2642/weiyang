@@ -110,7 +110,7 @@
 
               <!-- Events -->
               <div class="events-container d-flex flex-column gap-1">
-                <RouterLink
+                <NuxtLink
                   v-for="event in day.events"
                   :key="event.id"
                   :to="'/news/' + event.id"
@@ -123,7 +123,7 @@
                   :title="`${getEventTypeLabel(event.type)}-${event.title}`"
                 >
                   {{ event.time.split("-")[0] }} {{ event.title }}
-                </RouterLink>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
                 v-if="monthItem.events.length > 0"
                 class="month-events-preview d-flex flex-column gap-1 mt-2"
               >
-                <RouterLink
+                <NuxtLink
                   v-for="event in monthItem.events.slice(0, 3)"
                   :key="event.id"
                   :to="'/news/' + event.id"
@@ -174,7 +174,7 @@
                   {{ event.date.split("-")[1] }}/{{ event.date.split("-")[2] }}
                   {{ event.time ? event.time.split("-")[0] : "" }}
                   {{ event.title }}
-                </RouterLink>
+                </NuxtLink>
                 <div
                   v-if="monthItem.events.length > 3"
                   class="text-white-50 small fst-italic mt-1 text-center"
@@ -195,7 +195,8 @@
 
 <script>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { useNewsStore } from "../stores/newsStore";
+import { useNewsStore } from "~/stores/newsStore";
+import { useHead } from "#app";
 
 const sharedViewMode = ref("month");
 const sharedCurrentDate = ref(new Date());
@@ -281,7 +282,7 @@ export default {
     };
 
     onMounted(() => {
-      document.title = "活動行事曆 - 未央樂集";
+      useHead({ title: "活動行事曆 - 未央樂集" });
       if (lastIsMobile) {
         viewMode.value = "year";
       }

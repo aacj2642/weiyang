@@ -109,10 +109,14 @@
 
 <script>
 import { mapState } from "pinia";
-import { useMemberStore, positionBadgeStyle } from "@/stores/memberStore";
+import { useMemberStore, positionBadgeStyle } from "~/stores/memberStore";
+import { useHead } from "#app";
 
 export default {
   name: "MemberView",
+  setup() {
+    useHead({ title: "成員介紹 - 未央樂集" });
+  },
   computed: {
     ...mapState(useMemberStore, ["allCategories"]),
     badgeStyle() {
@@ -122,9 +126,6 @@ export default {
         border: "1px solid " + positionBadgeStyle.color,
       };
     },
-  },
-  mounted() {
-    document.title = "成員介紹 - 未央樂集";
   },
   methods: {
     handleImageError(e, memberName) {
@@ -136,7 +137,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .member-page {
   background-color: $primary;

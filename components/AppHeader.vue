@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-dark navbar-expand-md header" @touchmove.stop>
-    <RouterLink class="header-index-link" to="/" @click="checkNavExpend">
+    <NuxtLink class="header-index-link" to="/" @click="checkNavExpend">
       <img src="/logo_text.png" alt="weiyang_logo" class="header-logo" />
-    </RouterLink>
+    </NuxtLink>
     <button class="navbar-toggler border-0" @click="navbarExpend = !navbarExpend" type="button"
       data-bs-toggle="collapse" data-bs-target="#weiYangNavbarScroll" aria-controls="navbarScroll" aria-expanded="false"
       aria-label="Toggle navigation" ref="toggleButton">
@@ -22,9 +22,9 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark animate effect p-0">
             <li v-for="child in headerLink.children" :key="child.title">
-              <RouterLink class="dropdown-item header-dropdown-item" @click="checkNavExpend" :to="child.path">
+              <NuxtLink class="dropdown-item header-dropdown-item" @click="checkNavExpend" :to="child.path">
                 {{ child.title }}
-              </RouterLink>
+              </NuxtLink>
             </li>
           </ul>
         </li>
@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 
 export default {
   data() {
@@ -82,7 +81,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .header {
   padding: 0;

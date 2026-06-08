@@ -52,10 +52,10 @@
           <!-- Bottom Button -->
           <div class="d-flex w-100 align-items-center mt-5 mb-lg-5 position-relative z-3">
             <div class="flex-grow-1 border-top border-white border-opacity-25 me-4"></div>
-            <RouterLink to="/member"
+            <NuxtLink to="/member"
               class="btn btn-outline-light rounded-0 px-4 py-2 d-flex align-items-center text-nowrap">
               成員介紹 <i class="bi bi-arrow-right ms-3"></i>
-            </RouterLink>
+            </NuxtLink>
           </div>
         </div>
 
@@ -65,12 +65,8 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 export default {
   name: "AboutSection",
-  components: {
-    RouterLink,
-  },
   props: {
     showInternalTitle: {
       type: Boolean,
@@ -81,7 +77,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .about-section {
   background-color: $primary;

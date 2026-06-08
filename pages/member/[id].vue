@@ -70,13 +70,27 @@
 </template>
 
 <script>
-import { useMemberStore, positionBadgeStyle } from "@/stores/memberStore";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import { useMemberStore, positionBadgeStyle } from "~/stores/memberStore";
+import { useHead } from "#app";
 
 export default {
   name: "MemberDetailView",
-  data() {
+  setup() {
+    const route = useRoute();
+    const store = useMemberStore();
+    const member = computed(() => {
+      const memberId = route.params.id;
+      return store.getMemberById(memberId) || null;
+    });
+
+    useHead({
+      title: computed(() => member.value ? `${member.value.name} - 未央樂集` : "成員介紹 - 未央樂集")
+    });
+
     return {
-      member: null,
+      member
     };
   },
   computed: {
@@ -88,23 +102,7 @@ export default {
       };
     },
   },
-  created() {
-    this.fetchMember();
-  },
-  watch: {
-    "$route.params.id": "fetchMember",
-  },
   methods: {
-    fetchMember() {
-      const memberId = this.$route.params.id;
-      const store = useMemberStore();
-      this.member = store.getMemberById(memberId) || null;
-
-      if (this.member) {
-        document.title = `${this.member.name} - 未央樂集`;
-      }
-    },
-
     handleImageError(e) {
       if (this.member) {
         e.target.src = `${import.meta.env.BASE_URL}weiyang_logo.png`;
@@ -115,7 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .member-detail-page {
   background-color: $primary;

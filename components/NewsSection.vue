@@ -14,7 +14,7 @@
       <!-- Cards -->
       <div class="row justify-content-center g-5 mt-3">
         <div v-for="item in displayedNews" :key="item.id" class="col-12 col-md-6 col-lg-4 px-4">
-          <RouterLink :to="'/news/' + item.id" class="text-decoration-none h-100 d-block">
+          <NuxtLink :to="'/news/' + item.id" class="text-decoration-none h-100 d-block">
             <div class="news-card position-relative h-100">
               <div class="card-img-placeholder">
                 <img :src="item.image" :alt="item.title" class="news-img" @error="handleImageError">
@@ -36,30 +36,26 @@
                 </div>
               </div>
             </div>
-          </RouterLink>
+          </NuxtLink>
         </div>
       </div>
 
       <!-- More Button -->
       <div class="text-center pt-5">
-        <RouterLink :to="moreLink"
+        <NuxtLink :to="moreLink"
           class="btn btn-outline-light rounded-0 px-4 py-2 mt-5 letter-spacing-wide shadow-none">
           查看更多 <i class="bi bi-arrow-right ms-3"></i>
-        </RouterLink>
+        </NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
-import { useNewsStore } from "../stores/newsStore";
+import { useNewsStore } from "~/stores/newsStore";
 
 export default {
   name: "NewsSection",
-  components: {
-    RouterLink,
-  },
   data() {
     return {
       currentTab: "all",
@@ -103,7 +99,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .news-section {
   width: 100%;

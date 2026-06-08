@@ -13,7 +13,7 @@
     <div class="container pb-5">
       <div class="row g-4">
         <div v-for="item in filteredNews" :key="item.id" class="col-12 col-md-6 col-lg-4">
-          <RouterLink :to="'/news/' + item.id" class="text-decoration-none h-100 d-block">
+          <NuxtLink :to="'/news/' + item.id" class="text-decoration-none h-100 d-block">
             <div class="news-card h-100 border-0 bg-dark-soft overflow-hidden">
               <div class="card-img-container position-relative">
                 <img :src="item.image" :alt="item.title" class="card-img-top news-image"
@@ -29,7 +29,7 @@
                 </p>
               </div>
             </div>
-          </RouterLink>
+          </NuxtLink>
         </div>
       </div>
       
@@ -43,10 +43,11 @@
 <script>
 import { computed, watchEffect } from "vue";
 import { useRoute } from "vue-router";
-import { useNewsStore } from "../stores/newsStore";
+import { useNewsStore } from "~/stores/newsStore";
+import { useHead } from "#app";
 
 export default {
-  name: "NewsListView",
+  name: "NewsList",
   setup() {
     const route = useRoute();
     const newsStore = useNewsStore();
@@ -72,7 +73,9 @@ export default {
     });
 
     watchEffect(() => {
-      document.title = `${pageTitle.value} - 未央樂集`;
+      useHead({
+        title: `${pageTitle.value} - 未央樂集`
+      });
     });
 
     const formatDate = (dateStr) => {
@@ -82,7 +85,6 @@ export default {
     };
 
     const handleImageError = (e) => {
-      // Background pattern if image fails
       e.target.src = "https://placehold.co/600x400/222/555?text=No+Image";
     };
 

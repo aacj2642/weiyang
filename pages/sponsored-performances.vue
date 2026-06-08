@@ -19,7 +19,7 @@
     <div class="container pb-5">
       <div class="row g-4">
         <div v-for="item in sponsoredNews" :key="item.id" class="col-12">
-          <RouterLink
+          <NuxtLink
             :to="'/news/' + item.id"
             class="text-decoration-none d-block"
           >
@@ -90,7 +90,7 @@
                 </div>
               </div>
             </div>
-          </RouterLink>
+          </NuxtLink>
         </div>
       </div>
 
@@ -105,8 +105,9 @@
 </template>
 
 <script>
-import { computed, watchEffect } from "vue";
-import { useNewsStore } from "../stores/newsStore";
+import { computed } from "vue";
+import { useNewsStore } from "~/stores/newsStore";
+import { useHead } from "#app";
 
 export default {
   name: "SponsoredPerformancesView",
@@ -117,8 +118,8 @@ export default {
       return newsStore.sponsoredNews;
     });
 
-    watchEffect(() => {
-      document.title = `受補助之演出 - 未央樂集`;
+    useHead({
+      title: "受補助之演出 - 未央樂集"
     });
 
     const formatDate = (dateStr) => {

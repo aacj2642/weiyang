@@ -85,30 +85,27 @@
 </template>
 
 <script>
-import { computed, watchEffect } from "vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { useNewsStore } from "../stores/newsStore";
+import { useNewsStore } from "~/stores/newsStore";
+import { useHead } from "#app";
 
 export default {
   name: "NewsDetailView",
   setup() {
     const route = useRoute();
     const newsStore = useNewsStore();
-    const id = route.params.id;
+    const id = computed(() => route.params.id);
 
-    const newsItem = computed(() => newsStore.getNewsById(id));
+    const newsItem = computed(() => newsStore.getNewsById(id.value));
 
     const newsTypeLabel = computed(() => {
       if (!newsItem.value) return "";
       return newsItem.value.type === "performance" ? "演出訊息" : "講座訊息";
     });
 
-    watchEffect(() => {
-      if (newsItem.value) {
-        document.title = `${newsItem.value.title} - 未央樂集`;
-      } else {
-        document.title = "消息詳情 - 未央樂集";
-      }
+    useHead({
+      title: computed(() => newsItem.value ? `${newsItem.value.title} - 未央樂集` : "消息詳情 - 未央樂集")
     });
 
     const handleImageError = (e) => {

@@ -80,8 +80,13 @@
 </template>
 
 <script>
+import { useHead } from "#app";
+
 export default {
   name: "PerformanceVideoView",
+  setup() {
+    useHead({ title: "演出影音 - 未央樂集" });
+  },
   data() {
     return {
       currentPlaylist: { id: 'PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4', title: '【品味三國——空城與古琴(貳)】' },
@@ -94,9 +99,6 @@ export default {
         { id: 'PLNgfI6_tCFiKPK_TAfBd2zwD03Ndp-W0p', title: '【紅樓夢‧樂】', firstVideoId: '5LjHyhU3flQ' },
       ],
     };
-  },
-  mounted() {
-    document.title = "演出影音 - 未央樂集";
   },
   methods: {
     setCurrentPlaylist(playlist) {
@@ -117,7 +119,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .video-page {
   background-color: $primary;

@@ -7,7 +7,7 @@
             rgba(var(--bs-primary-rgb), 0.3) 30%,
             rgba(var(--bs-primary-rgb), 0) 100%
           ),
-          url('./group_photo.jpg');
+          url('/weiyang/group_photo.jpg');
       ">
       <img src="/hero-text.png" alt="weiyang" class="banner-text animate-fade-in-up" />
     </div>
@@ -22,16 +22,15 @@
 </template>
 
 <script>
-import AboutSection from "@/components/AboutSection.vue";
-import NewsSection from "@/components/NewsSection.vue";
+import { useHead } from "#app";
 
 export default {
-  components: {
-    AboutSection,
-    NewsSection,
+  setup() {
+    useHead({
+      title: "首頁 - 未央樂集"
+    });
   },
   mounted() {
-    document.title = "首頁 - 未央樂集";
     this.initScrollReveal();
   },
   methods: {
@@ -58,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/customVariables";
+@import "~/assets/scss/customVariables";
 
 .banner {
   width: 100vw;
