@@ -12,6 +12,10 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
+          name: "google-site-verification",
+          content: "e6j6aJcyPQxHPU2SbQgL_n_T355U4uCqTUjsX2ZS0bc",
+        },
+        {
           name: "description",
           content:
             "未央樂集（Weiyang Sizhule）成立於高雄，以國樂演奏與音樂講座為核心，結合經典文學與中國傳統絲竹音樂。未央是漢代宮殿名稱，意謂未盡；樂集因樂而聚。期待與您一同在悠揚的樂音中探尋人生的哲理。",
