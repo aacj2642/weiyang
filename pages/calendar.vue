@@ -513,6 +513,7 @@ export default {
 
 <style lang="scss" scoped>
 .calendar-view {
+  width: 100%;
   background-color: #0c0f12;
   animation: fadeIn 0.8s ease-out;
 }
