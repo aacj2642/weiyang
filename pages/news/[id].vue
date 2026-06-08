@@ -99,13 +99,142 @@ export default {
 
     const newsItem = computed(() => newsStore.getNewsById(id.value));
 
+    const canonicalUrl = computed(() => {
+      const path = route.path.endsWith("/") ? route.path : `${route.path}/`;
+      return `https://aacj2642.github.io/weiyang${path}`;
+    });
+
+    const newsDesc = computed(() => {
+      if (!newsItem.value) return "未央樂集最新消息。";
+      const clean = newsItem.value.description
+        .replace(/[\s\r\n]+/g, " ")
+        .replace(/•/g, "")
+        .trim();
+      return clean.length > 200 ? `${clean.slice(0, 197)}...` : clean;
+    });
+
+    const ogImage = computed(() => {
+      if (!newsItem.value)
+        return "https://aacj2642.github.io/weiyang/weiyang_logo.png";
+      const base = "https://aacj2642.github.io";
+      const path = newsItem.value.image;
+      return `${base}${path}`;
+    });
+
     const newsTypeLabel = computed(() => {
       if (!newsItem.value) return "";
       return newsItem.value.type === "performance" ? "演出訊息" : "講座訊息";
     });
 
+    const jsonLd = computed(() => {
+      if (!newsItem.value) return {};
+      const base = "https://aacj2642.github.io";
+      const parentName =
+        newsItem.value.type === "performance" ? "演出訊息" : "講座訊息";
+      const parentSlug =
+        newsItem.value.type === "performance"
+          ? "performance-news"
+          : "seminar-news";
+
+      const eventSchema = {
+        "@type": newsItem.value.type === "performance" ? "MusicEvent" : "Event",
+        name: newsItem.value.title,
+        description: newsDesc.value,
+        startDate: `${newsItem.value.date}T${newsItem.value.time || "19:30"}:00`,
+        location: {
+          "@type": "Place",
+          name: newsItem.value.location,
+          address: newsItem.value.location,
+        },
+        image: ogImage.value,
+        performer: {
+          "@type": "MusicGroup",
+          name: "未央樂集",
+          url: "https://aacj2642.github.io/weiyang/",
+        },
+        organizer: {
+          "@type": "Organization",
+          name: "未央樂集",
+          url: "https://aacj2642.github.io/weiyang/",
+        },
+      };
+
+      if (newsItem.value.link) {
+        eventSchema.offers = {
+          "@type": "Offer",
+          url: newsItem.value.link,
+          availability: "https://schema.org/InStock",
+        };
+      }
+
+      return {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "首頁",
+                item: "https://aacj2642.github.io/weiyang/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: parentName,
+                item: `${base}/weiyang/${parentSlug}/`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: newsItem.value.title,
+                item: `${base}/weiyang/news/${newsItem.value.id}/`,
+              },
+            ],
+          },
+          eventSchema,
+        ],
+      };
+    });
+
     useHead({
-      title: computed(() => newsItem.value ? `${newsItem.value.title} - 未央樂集` : "消息詳情 - 未央樂集")
+      title: computed(() =>
+        newsItem.value
+          ? `${newsItem.value.title} - 未央樂集 Weiyang Sizhule`
+          : "消息詳情 - 未央樂集 Weiyang Sizhule",
+      ),
+      meta: [
+        { name: "description", content: newsDesc },
+        {
+          property: "og:title",
+          content: computed(() =>
+            newsItem.value
+              ? `${newsItem.value.title} - 未央樂集 Weiyang Sizhule`
+              : "消息詳情 - 未央樂集",
+          ),
+        },
+        { property: "og:description", content: newsDesc },
+        { property: "og:image", content: ogImage },
+        { property: "og:url", content: canonicalUrl },
+        {
+          name: "twitter:title",
+          content: computed(() =>
+            newsItem.value
+              ? `${newsItem.value.title} - 未央樂集 Weiyang Sizhule`
+              : "消息詳情 - 未央樂集",
+          ),
+        },
+        { name: "twitter:description", content: newsDesc },
+        { name: "twitter:image", content: ogImage },
+      ],
+      link: [{ rel: "canonical", href: canonicalUrl }],
+      script: [
+        {
+          type: "application/ld+json",
+          children: computed(() => JSON.stringify(jsonLd.value)),
+        },
+      ],
     });
 
     const handleImageError = (e) => {

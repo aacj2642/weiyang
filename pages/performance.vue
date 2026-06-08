@@ -1,11 +1,18 @@
 <template>
   <div class="video-page">
+    <h1 class="visually-hidden">演出影音 - 未央樂集 Weiyang Sizhule</h1>
     <div class="row mb-3">
       <div class="col-12 text-center">
-        <div class="section-title-wrapper d-inline-flex flex-column align-items-center">
-          <h2 class="display-4 fw-bold text-white mb-2 category-title">演出影音</h2>
+        <div
+          class="section-title-wrapper d-inline-flex flex-column align-items-center"
+        >
+          <h2 class="display-4 fw-bold text-white mb-2 category-title">
+            演出影音
+          </h2>
           <div class="title-underline"></div>
-          <p class="text-white-50 mt-3 letter-spacing-wide">PERFORMANCE VIDEOS</p>
+          <p class="text-white-50 mt-3 letter-spacing-wide">
+            PERFORMANCE VIDEOS
+          </p>
         </div>
       </div>
     </div>
@@ -15,14 +22,29 @@
       <div class="col-12 col-xl-10 d-flex justify-content-center">
         <div class="main-player-card shadow-2xl overflow-hidden rounded-4">
           <div class="ratio ratio-16x9">
-            <iframe :src="`https://www.youtube.com/embed/videoseries?list=${currentPlaylist.id}`"
-              title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+            <iframe
+              :src="`https://www.youtube.com/embed/videoseries?list=${currentPlaylist.id}`"
+              title="YouTube video player"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+            ></iframe>
           </div>
-          <div class="main-player-info p-4 d-flex align-items-center justify-content-between">
+          <div
+            class="main-player-info p-4 d-flex align-items-center justify-content-between"
+          >
             <div>
-              <h3 class="h4 fw-bold text-white mb-1">{{ currentPlaylist.title }}</h3>
+              <h3 class="h4 fw-bold text-white mb-1">
+                {{ currentPlaylist.title }}
+              </h3>
               <p class="text-white-50 mb-0">正在播放此清單內容</p>
             </div>
             <div class="playlist-badge">
@@ -39,16 +61,26 @@
       <div class="col-12 col-xl-10">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <div v-for="playlist in playlists" :key="playlist.id" class="col">
-            <div class="playlist-card h-100" :class="{ 'active-card': playlist.id === currentPlaylist.id }"
-              @click="setCurrentPlaylist(playlist)">
+            <div
+              class="playlist-card h-100"
+              :class="{ 'active-card': playlist.id === currentPlaylist.id }"
+              @click="setCurrentPlaylist(playlist)"
+            >
               <div class="card bg-transparent border-0 overflow-hidden">
                 <div class="playlist-thumbnail-wrapper position-relative">
                   <!-- YouTube Playlist Thumbnail - Using a custom thumbnail from the first video of each playlist would be better, 
                        but as a fallback we use a generic YouTube style overlay -->
-                  <div class="thumbnail-aspect ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
-                    <img :src="getPlaylistThumbnail(playlist)" class="img-fluid object-fit-cover w-100 h-100"
-                      :alt="playlist.title">
-                    <div class="thumbnail-overlay d-flex align-items-center justify-content-center">
+                  <div
+                    class="thumbnail-aspect ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm"
+                  >
+                    <img
+                      :src="getPlaylistThumbnail(playlist)"
+                      class="img-fluid object-fit-cover w-100 h-100"
+                      :alt="playlist.title"
+                    />
+                    <div
+                      class="thumbnail-overlay d-flex align-items-center justify-content-center"
+                    >
                       <div class="play-button-icon">
                         <i class="bi bi-play-fill fs-2"></i>
                       </div>
@@ -56,7 +88,9 @@
                   </div>
                 </div>
                 <div class="card-body px-0 pt-3 pb-0">
-                  <h4 class="h6 fw-bold text-white mb-2 playlist-title-text">{{ playlist.title }}</h4>
+                  <h4 class="h6 fw-bold text-white mb-2 playlist-title-text">
+                    {{ playlist.title }}
+                  </h4>
                 </div>
               </div>
             </div>
@@ -68,10 +102,17 @@
     <!-- CTA Section -->
     <div class="row mt-5 pt-5 pb-4">
       <div class="col-12 text-center text-white">
-        <div class="border-top border-white border-opacity-10 pt-5 mb-4 max-w-lg mx-auto d-inline-block w-75"></div>
-        <p class="mb-4 opacity-75">想查看更多精彩演出？歡迎訂閱我們的 YouTube 頻道</p>
-        <a href="https://www.youtube.com/@weiyangsizhule666?sub_confirmation=1" target="_blank"
-          class="btn btn-outline-light rounded-pill px-5 py-3 subscribe-btn">
+        <div
+          class="border-top border-white border-opacity-10 pt-5 mb-4 max-w-lg mx-auto d-inline-block w-75"
+        ></div>
+        <p class="mb-4 opacity-75">
+          想查看更多精彩演出？歡迎訂閱我們的 YouTube 頻道
+        </p>
+        <a
+          href="https://www.youtube.com/@weiyangsizhule666?sub_confirmation=1"
+          target="_blank"
+          class="btn btn-outline-light rounded-pill px-5 py-3 subscribe-btn"
+        >
           <i class="bi bi-youtube me-2"></i>前往 YouTube 頻道
         </a>
       </div>
@@ -81,22 +122,102 @@
 
 <script>
 import { useHead } from "#app";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 
 export default {
   name: "PerformanceVideoView",
   setup() {
-    useHead({ title: "演出影音 - 未央樂集" });
+    const route = useRoute();
+    const canonicalUrl = computed(() => {
+      const path = route.path.endsWith("/") ? route.path : `${route.path}/`;
+      return `https://aacj2642.github.io/weiyang${path}`;
+    });
+
+    const description =
+      "觀賞未央樂集（Weiyang Sizhule）精心演繹的國樂合奏影片與YouTube影音清單。精選曲目包括《空城與古琴》、《唱一段台灣歌》、《紅樓夢‧樂》系列，帶您領略傳統絲竹與現代音樂交融之美。";
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "首頁",
+          item: "https://aacj2642.github.io/weiyang/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "演出影音",
+          item: "https://aacj2642.github.io/weiyang/performance/",
+        },
+      ],
+    };
+
+    useHead({
+      title: "演出影音 - 未央樂集 Weiyang Sizhule",
+      meta: [
+        { name: "description", content: description },
+        {
+          property: "og:title",
+          content: "演出影音 - 未央樂集 Weiyang Sizhule",
+        },
+        { property: "og:description", content: description },
+        { property: "og:url", content: canonicalUrl },
+        {
+          name: "twitter:title",
+          content: "演出影音 - 未央樂集 Weiyang Sizhule",
+        },
+        { name: "twitter:description", content: description },
+      ],
+      link: [{ rel: "canonical", href: canonicalUrl }],
+      script: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(jsonLd),
+        },
+      ],
+    });
   },
   data() {
     return {
-      currentPlaylist: { id: 'PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4', title: '【品味三國——空城與古琴(貳)】' },
+      currentPlaylist: {
+        id: "PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4",
+        title: "【品味三國——空城與古琴(貳)】",
+      },
       playlists: [
-        { id: 'PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4', title: '【品味三國——空城與古琴(貳)】', firstVideoId: 'pMIwUfv3-tw' },
-        { id: 'PLNgfI6_tCFiI1kk4VsizsgUX5XOmT6ja7', title: '【唱一段台灣歌】', firstVideoId: 'AKEGb5li57A' },
-        { id: 'PLNgfI6_tCFiIndYOo40tPq-MdfJGFB5Ff', title: '【耕樂者】', firstVideoId: 'bTXL-nn1ACQ' },
-        { id: 'PLNgfI6_tCFiJDeTEzNYqYdFoBFsjRbpUg', title: '【紅樓夢．樂】(貳)機關算盡王熙鳳', firstVideoId: '__J_59TvAzA' },
-        { id: 'PLNgfI6_tCFiJ7vrZqW5IHPqJWgiwJwx1J', title: '【品味三國——空城與古琴】', firstVideoId: 'xT3IsmKHe1A' },
-        { id: 'PLNgfI6_tCFiKPK_TAfBd2zwD03Ndp-W0p', title: '【紅樓夢‧樂】', firstVideoId: '5LjHyhU3flQ' },
+        {
+          id: "PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4",
+          title: "【品味三國——空城與古琴(貳)】",
+          firstVideoId: "pMIwUfv3-tw",
+        },
+        {
+          id: "PLNgfI6_tCFiI1kk4VsizsgUX5XOmT6ja7",
+          title: "【唱一段台灣歌】",
+          firstVideoId: "AKEGb5li57A",
+        },
+        {
+          id: "PLNgfI6_tCFiIndYOo40tPq-MdfJGFB5Ff",
+          title: "【耕樂者】",
+          firstVideoId: "bTXL-nn1ACQ",
+        },
+        {
+          id: "PLNgfI6_tCFiJDeTEzNYqYdFoBFsjRbpUg",
+          title: "【紅樓夢．樂】(貳)機關算盡王熙鳳",
+          firstVideoId: "__J_59TvAzA",
+        },
+        {
+          id: "PLNgfI6_tCFiJ7vrZqW5IHPqJWgiwJwx1J",
+          title: "【品味三國——空城與古琴】",
+          firstVideoId: "xT3IsmKHe1A",
+        },
+        {
+          id: "PLNgfI6_tCFiKPK_TAfBd2zwD03Ndp-W0p",
+          title: "【紅樓夢‧樂】",
+          firstVideoId: "5LjHyhU3flQ",
+        },
       ],
     };
   },
@@ -105,7 +226,7 @@ export default {
       this.currentPlaylist = playlist;
       // Scroll to top of player if on mobile
       if (window.innerWidth < 992) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
     getPlaylistThumbnail(playlist) {
@@ -113,7 +234,7 @@ export default {
         return `https://i.ytimg.com/vi/${playlist.firstVideoId}/hqdefault.jpg`;
       }
       return `https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80`;
-    }
+    },
   },
 };
 </script>

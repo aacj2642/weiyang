@@ -1,5 +1,8 @@
 <template>
   <div class="member-detail-page">
+    <h1 class="visually-hidden" v-if="member">
+      {{ member.name }} - 成員介紹 - 未央樂集 Weiyang Sizhule
+    </h1>
     <div class="row mb-3">
       <div class="col-12 text-center">
         <div
@@ -85,12 +88,114 @@ export default {
       return store.getMemberById(memberId) || null;
     });
 
+    const canonicalUrl = computed(() => {
+      const path = route.path.endsWith("/") ? route.path : `${route.path}/`;
+      return `https://aacj2642.github.io/weiyang${path}`;
+    });
+
+    const memberDesc = computed(() => {
+      if (!member.value) return "未央樂集團員介紹。";
+      const clean = member.value.description
+        .replace(/[\s\r\n]+/g, " ")
+        .replace(/•/g, "")
+        .trim();
+      return clean.length > 200 ? `${clean.slice(0, 197)}...` : clean;
+    });
+
+    const ogImage = computed(() => {
+      if (!member.value)
+        return "https://aacj2642.github.io/weiyang/weiyang_logo.png";
+      const base = "https://aacj2642.github.io";
+      const path = member.value.artisticPhoto || member.value.avatar;
+      return `${base}${path}`;
+    });
+
+    const jsonLd = computed(() => {
+      if (!member.value) return {};
+      const base = "https://aacj2642.github.io";
+      return {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "首頁",
+                item: "https://aacj2642.github.io/weiyang/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "成員介紹",
+                item: "https://aacj2642.github.io/weiyang/member/",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: member.value.name,
+                item: `${base}/weiyang/member/${member.value.id}/`,
+              },
+            ],
+          },
+          {
+            "@type": "Person",
+            name: member.value.name,
+            jobTitle: member.value.role,
+            description: memberDesc.value,
+            image: ogImage.value,
+            memberOf: {
+              "@type": "MusicGroup",
+              name: "未央樂集",
+              url: "https://aacj2642.github.io/weiyang/",
+            },
+          },
+        ],
+      };
+    });
+
     useHead({
-      title: computed(() => member.value ? `${member.value.name} - 未央樂集` : "成員介紹 - 未央樂集")
+      title: computed(() =>
+        member.value
+          ? `${member.value.name} - 成員介紹 - 未央樂集 Weiyang Sizhule`
+          : "成員介紹 - 未央樂集 Weiyang Sizhule",
+      ),
+      meta: [
+        { name: "description", content: memberDesc },
+        {
+          property: "og:title",
+          content: computed(() =>
+            member.value
+              ? `${member.value.name} - 未央樂集 Weiyang Sizhule`
+              : "成員介紹 - 未央樂集",
+          ),
+        },
+        { property: "og:description", content: memberDesc },
+        { property: "og:image", content: ogImage },
+        { property: "og:url", content: canonicalUrl },
+        {
+          name: "twitter:title",
+          content: computed(() =>
+            member.value
+              ? `${member.value.name} - 未央樂集 Weiyang Sizhule`
+              : "成員介紹 - 未央樂集",
+          ),
+        },
+        { name: "twitter:description", content: memberDesc },
+        { name: "twitter:image", content: ogImage },
+      ],
+      link: [{ rel: "canonical", href: canonicalUrl }],
+      script: [
+        {
+          type: "application/ld+json",
+          children: computed(() => JSON.stringify(jsonLd.value)),
+        },
+      ],
     });
 
     return {
-      member
+      member,
     };
   },
   computed: {

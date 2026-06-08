@@ -1,5 +1,6 @@
 <template>
   <div class="sponsored-performances-view">
+    <h1 class="visually-hidden">受補助之演出 - 未央樂集 Weiyang Sizhule</h1>
     <div class="row mb-5">
       <div class="col-12 text-center">
         <div
@@ -108,18 +109,68 @@
 import { computed } from "vue";
 import { useNewsStore } from "~/stores/newsStore";
 import { useHead } from "#app";
+import { useRoute } from "vue-router";
 
 export default {
   name: "SponsoredPerformancesView",
   setup() {
     const newsStore = useNewsStore();
+    const route = useRoute();
+
+    const canonicalUrl = computed(() => {
+      const path = route.path.endsWith("/") ? route.path : `${route.path}/`;
+      return `https://aacj2642.github.io/weiyang${path}`;
+    });
+
+    const description =
+      "查看未央樂集（Weiyang Sizhule）獲得高雄市文化局等政府與藝文單位補助之精選演出項目。提供詳細的演出日期、時間、地點及歷史回顧。";
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "首頁",
+          item: "https://aacj2642.github.io/weiyang/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "受補助之演出",
+          item: "https://aacj2642.github.io/weiyang/sponsored-performances/",
+        },
+      ],
+    };
 
     const sponsoredNews = computed(() => {
       return newsStore.sponsoredNews;
     });
 
     useHead({
-      title: "受補助之演出 - 未央樂集"
+      title: "受補助之演出 - 未央樂集 Weiyang Sizhule",
+      meta: [
+        { name: "description", content: description },
+        {
+          property: "og:title",
+          content: "受補助之演出 - 未央樂集 Weiyang Sizhule",
+        },
+        { property: "og:description", content: description },
+        { property: "og:url", content: canonicalUrl },
+        {
+          name: "twitter:title",
+          content: "受補助之演出 - 未央樂集 Weiyang Sizhule",
+        },
+        { name: "twitter:description", content: description },
+      ],
+      link: [{ rel: "canonical", href: canonicalUrl }],
+      script: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(jsonLd),
+        },
+      ],
     });
 
     const formatDate = (dateStr) => {

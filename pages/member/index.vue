@@ -1,5 +1,6 @@
 <template>
   <div class="member-page">
+    <h1 class="visually-hidden">成員介紹 - 未央樂集 Weiyang Sizhule</h1>
     <div class="row mb-3">
       <div class="col-12 text-center">
         <div
@@ -65,9 +66,9 @@
               v-for="member in category.members"
               :key="member.id || member.name"
             >
-              <div
-                class="card h-100 text-center border-0 bg-transparent member-card"
-                @click="member.id ? $router.push(`/member/${member.id}`) : null"
+              <NuxtLink
+                :to="member.id ? `/member/${member.id}` : '#'"
+                class="card h-100 text-center border-0 bg-transparent member-card text-decoration-none d-block"
               >
                 <div class="avatar-wrapper mx-auto mb-3 shadow-sm text-light">
                   <!-- 1:1 Avatar -->
@@ -98,7 +99,7 @@
                     {{ member.role }}
                   </p>
                 </div>
-              </div>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -111,11 +112,64 @@
 import { mapState } from "pinia";
 import { useMemberStore, positionBadgeStyle } from "~/stores/memberStore";
 import { useHead } from "#app";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 
 export default {
   name: "MemberView",
   setup() {
-    useHead({ title: "成員介紹 - 未央樂集" });
+    const route = useRoute();
+    const canonicalUrl = computed(() => {
+      const path = route.path.endsWith("/") ? route.path : `${route.path}/`;
+      return `https://aacj2642.github.io/weiyang${path}`;
+    });
+
+    const description =
+      "介紹未央樂集（Weiyang Sizhule）的核心團隊。包含團長王亭又、藝術總監薛青麗、行政總監黃淑敏、指揮阮麟鈞，以及吹管組、拉弦組、彈撥組、低音組與擊樂組的優秀演奏家。";
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "首頁",
+          item: "https://aacj2642.github.io/weiyang/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "成員介紹",
+          item: "https://aacj2642.github.io/weiyang/member/",
+        },
+      ],
+    };
+
+    useHead({
+      title: "成員介紹 - 未央樂集 Weiyang Sizhule",
+      meta: [
+        { name: "description", content: description },
+        {
+          property: "og:title",
+          content: "成員介紹 - 未央樂集 Weiyang Sizhule",
+        },
+        { property: "og:description", content: description },
+        { property: "og:url", content: canonicalUrl },
+        {
+          name: "twitter:title",
+          content: "成員介紹 - 未央樂集 Weiyang Sizhule",
+        },
+        { name: "twitter:description", content: description },
+      ],
+      link: [{ rel: "canonical", href: canonicalUrl }],
+      script: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(jsonLd),
+        },
+      ],
+    });
   },
   computed: {
     ...mapState(useMemberStore, ["allCategories"]),

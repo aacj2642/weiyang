@@ -1,5 +1,6 @@
 <template>
   <div class="calendar-view">
+    <h1 class="visually-hidden">活動行事曆 - 未央樂集 Weiyang Sizhule</h1>
     <div class="row mb-3">
       <div class="col-12 text-center">
         <div
@@ -197,6 +198,7 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useNewsStore } from "~/stores/newsStore";
 import { useHead } from "#app";
+import { useRoute } from "vue-router";
 
 const sharedViewMode = ref("month");
 const sharedCurrentDate = ref(new Date());
@@ -204,6 +206,59 @@ const sharedCurrentDate = ref(new Date());
 export default {
   name: "CalendarView",
   setup() {
+    const route = useRoute();
+    const canonicalUrl = computed(() => {
+      const path = route.path.endsWith("/") ? route.path : `${route.path}/`;
+      return `https://aacj2642.github.io/weiyang${path}`;
+    });
+
+    const description =
+      "查看未央樂集（Weiyang Sizhule）的年度活動行事曆。包括最新的國樂演奏、文學音樂講座、體驗課程等各類活動的詳細時間與地點，提供線上報名及購票管道。";
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "首頁",
+          item: "https://aacj2642.github.io/weiyang/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "活動行事曆",
+          item: "https://aacj2642.github.io/weiyang/calendar/",
+        },
+      ],
+    };
+
+    useHead({
+      title: "活動行事曆 - 未央樂集 Weiyang Sizhule",
+      meta: [
+        { name: "description", content: description },
+        {
+          property: "og:title",
+          content: "活動行事曆 - 未央樂集 Weiyang Sizhule",
+        },
+        { property: "og:description", content: description },
+        { property: "og:url", content: canonicalUrl },
+        {
+          name: "twitter:title",
+          content: "活動行事曆 - 未央樂集 Weiyang Sizhule",
+        },
+        { name: "twitter:description", content: description },
+      ],
+      link: [{ rel: "canonical", href: canonicalUrl }],
+      script: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(jsonLd),
+        },
+      ],
+    });
+
     const newsStore = useNewsStore();
     const allNews = computed(() => newsStore.allNews);
 
@@ -282,7 +337,6 @@ export default {
     };
 
     onMounted(() => {
-      useHead({ title: "活動行事曆 - 未央樂集" });
       if (lastIsMobile) {
         viewMode.value = "year";
       }
