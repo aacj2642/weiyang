@@ -135,7 +135,7 @@ export default {
     });
 
     const description =
-      "觀賞未央樂集（Weiyang Sizhule）精心演繹的國樂合奏影片與YouTube影音清單。精選曲目包括《空城與古琴》、《唱一段台灣歌》、《紅樓夢‧樂》系列，帶您領略傳統絲竹與現代音樂交融之美。";
+      "觀賞未央樂集（Weiyang Sizhule）精心演繹的國樂合奏影片與YouTube影音清單。精選曲目包括《空城與古琴》、《唱一段台灣歌》、結合詩詞與中國古典文學的《紅樓夢‧樂》系列，帶您領略傳統絲竹與現代音樂交融之美。";
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -157,18 +157,23 @@ export default {
     };
 
     useHead({
-      title: "演出影音 - 未央樂集 Weiyang Sizhule",
+      title: "演出影音 - 未央樂集 Weiyang Sizhule | 高雄國樂",
       meta: [
         { name: "description", content: description },
         {
+          name: "keywords",
+          content:
+            "未央樂集,國樂,國樂團,絲竹樂,高雄,高雄國樂,國樂演奏,音樂講座,紅樓夢,詩詞,中國古典,品味三國,王亭又,薛青麗,黃淑敏,阮麟鈞,中國音樂",
+        },
+        {
           property: "og:title",
-          content: "演出影音 - 未央樂集 Weiyang Sizhule",
+          content: "演出影音 - 未央樂集 Weiyang Sizhule | 高雄國樂",
         },
         { property: "og:description", content: description },
         { property: "og:url", content: canonicalUrl },
         {
           name: "twitter:title",
-          content: "演出影音 - 未央樂集 Weiyang Sizhule",
+          content: "演出影音 - 未央樂集 Weiyang Sizhule | 高雄國樂",
         },
         { name: "twitter:description", content: description },
       ],

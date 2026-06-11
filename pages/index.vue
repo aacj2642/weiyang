@@ -34,7 +34,7 @@ export default {
     });
 
     const description =
-      "未央是漢代宮殿的名稱，意謂未盡；樂集因樂而聚。未央樂集以絲竹為根基，提供精湛的國樂演奏與文學音樂講座，融合傳統與現代，將樂音深植南臺灣。";
+      "未央樂集是一支成立於高雄的國樂團，以國樂演奏與音樂講座為核心，結合《紅樓夢》、中國古典文學與詩詞，將傳統絲竹樂音深植南臺灣。";
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -45,7 +45,14 @@ export default {
       url: "https://aacj2642.github.io/weiyang/",
       logo: "https://aacj2642.github.io/weiyang/weiyang_logo.png",
       image: "https://aacj2642.github.io/weiyang/group_photo.jpg",
-      genre: ["國樂", "絲竹樂", "室內樂", "Chinese Chamber Music"],
+      genre: [
+        "國樂",
+        "國樂團",
+        "絲竹樂",
+        "室內樂",
+        "Chinese Chamber Music",
+        "中國古典音樂",
+      ],
       foundingLocation: {
         "@type": "Place",
         name: "高雄, 台灣",
@@ -56,11 +63,30 @@ export default {
       title: "首頁 - 未央樂集 Weiyang Sizhule",
       meta: [
         { name: "description", content: description },
-        { property: "og:title", content: "首頁 - 未央樂集 Weiyang Sizhule" },
+        {
+          name: "keywords",
+          content:
+            "未央樂集,國樂,國樂團,絲竹樂,高雄,高雄國樂,國樂演奏,音樂講座,紅樓夢,詩詞,中國古典,品味三國,王亭又,薛青麗,黃淑敏,阮麟鈞,中國音樂",
+        },
+        {
+          property: "og:title",
+          content: "首頁 - 未央樂集 Weiyang Sizhule | 高雄國樂",
+        },
         { property: "og:description", content: description },
         { property: "og:url", content: canonicalUrl },
-        { name: "twitter:title", content: "首頁 - 未央樂集 Weiyang Sizhule" },
+        {
+          property: "og:image",
+          content: "https://aacj2642.github.io/weiyang/weiyang_logo.png",
+        },
+        {
+          name: "twitter:title",
+          content: "首頁 - 未央樂集 Weiyang Sizhule | 高雄國樂",
+        },
         { name: "twitter:description", content: description },
+        {
+          name: "twitter:image",
+          content: "https://aacj2642.github.io/weiyang/weiyang_logo.png",
+        },
       ],
       link: [{ rel: "canonical", href: canonicalUrl }],
       script: [
@@ -106,13 +132,14 @@ export default {
   background-size: cover;
   background-position: center;
   height: 480px;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       rgba(var(--bs-primary-rgb), 1) 0%,
       rgba(var(--bs-primary-rgb), 0.7) 20%,
       rgba(var(--bs-primary-rgb), 0.3) 30%,
       rgba(var(--bs-primary-rgb), 0) 100%
     ),
-    url('/weiyang/group_photo.jpg');
+    url("/weiyang/group_photo.jpg");
 
   @media (min-width: map-get($grid-breakpoints, md)) {
     height: 800px;

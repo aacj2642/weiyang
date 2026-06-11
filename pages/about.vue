@@ -32,7 +32,7 @@ export default {
     });
 
     const description =
-      "了解未央樂集（Weiyang Sizhule）的創立宗旨與核心精神。未央樂集由一群熱愛音樂的人士組成，以中國傳統笛與琵琶象徵本團以絲竹為根基，在南台灣推廣精湛的國樂演出與文學音樂講座。";
+      "了解未央樂集（Weiyang Sizhule）的創立宗旨與核心精神。我們是一支成立於高雄的國樂團，以傳統絲竹為根基，結合《紅樓夢》、中國古典詩詞等文學，在南台灣推廣精湛的國樂演出與音樂講座。";
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -57,6 +57,11 @@ export default {
       title: "關於我們 - 未央樂集 Weiyang Sizhule",
       meta: [
         { name: "description", content: description },
+        {
+          name: "keywords",
+          content:
+            "未央樂集,國樂,國樂團,絲竹樂,高雄,高雄國樂,國樂演奏,音樂講座,紅樓夢,詩詞,中國古典,品味三國,王亭又,薛青麗,黃淑敏,阮麟鈞,中國音樂",
+        },
         {
           property: "og:title",
           content: "關於我們 - 未央樂集 Weiyang Sizhule",

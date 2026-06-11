@@ -213,7 +213,7 @@ export default {
     });
 
     const description =
-      "查看未央樂集（Weiyang Sizhule）的年度活動行事曆。包括最新的國樂演奏、文學音樂講座、體驗課程等各類活動的詳細時間與地點，提供線上報名及購票管道。";
+      "查看未央樂集（Weiyang Sizhule）的年度活動行事曆。包括最新的國樂演奏、結合《紅樓夢》與中國古典詩詞的文學音樂講座、體驗課程等各類活動的詳細時間與地點，提供線上報名及購票管道。";
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -238,6 +238,11 @@ export default {
       title: "活動行事曆 - 未央樂集 Weiyang Sizhule",
       meta: [
         { name: "description", content: description },
+        {
+          name: "keywords",
+          content:
+            "未央樂集,國樂,國樂團,絲竹樂,高雄,高雄國樂,國樂演奏,音樂講座,紅樓夢,詩詞,中國古典,品味三國,王亭又,薛青麗,黃淑敏,阮麟鈞,中國音樂",
+        },
         {
           property: "og:title",
           content: "活動行事曆 - 未央樂集 Weiyang Sizhule",

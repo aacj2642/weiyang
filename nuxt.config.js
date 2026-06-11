@@ -23,13 +23,13 @@ export default defineNuxtConfig({
         {
           name: "keywords",
           content:
-            "未央樂集,國樂,絲竹樂,高雄國樂,國樂演奏,音樂講座,紅樓夢,品味三國,王亭又,薛青麗,黃淑敏,阮麟鈞,中國音樂",
+            "未央樂集,國樂,國樂團,絲竹樂,高雄,高雄國樂,國樂演奏,音樂講座,紅樓夢,詩詞,中國古典,品味三國,王亭又,薛青麗,黃淑敏,阮麟鈞,中國音樂",
         },
         { property: "og:title", content: "未央樂集 Weiyang Sizhule" },
         {
           property: "og:description",
           content:
-            "未央樂集成立於高雄，以國樂演奏與音樂講座為核心，結合經典文學與中國傳統絲竹音樂，期許傳統樂音在南台灣落地生根。",
+            "未央樂集是一支成立於高雄的國樂團，以國樂演奏與音樂講座為核心，結合《紅樓夢》等中國古典文學與詩詞，期許傳統絲竹樂音在南台灣落地生根。",
         },
         {
           property: "og:image",
@@ -42,11 +42,11 @@ export default defineNuxtConfig({
         {
           name: "twitter:description",
           content:
-            "未央樂集成立於高雄，以國樂演奏與音樂講座為核心，結合經典文學與中國傳統絲竹音樂，期許傳統樂音在南台灣落地生根。",
+            "未央樂集是一支成立於高雄的國樂團，以國樂演奏與音樂講座為核心，結合《紅樓夢》等中國古典文學與詩詞，期許傳統絲竹樂音在南台灣落地生根。",
         },
         {
           name: "twitter:image",
-          content: "https://aacj2642.github.io/weiyang/group_photo.jpg",
+          content: "https://aacj2642.github.io/weiyang/weiyang_logo.png",
         },
         { name: "robots", content: "index, follow" },
       ],
