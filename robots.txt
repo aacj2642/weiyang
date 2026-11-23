@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aacj2642.github.io/weiyang/sitemap.xml
