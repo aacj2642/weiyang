@@ -23,7 +23,7 @@
         <div class="main-player-card shadow-2xl overflow-hidden rounded-4">
           <div class="ratio ratio-16x9">
             <iframe
-              :src="`https://www.youtube.com/embed/videoseries?list=${currentPlaylist.id}`"
+              :src="currentEmbedUrl"
               title="YouTube video player"
               frameborder="0"
               allow="
@@ -45,11 +45,17 @@
               <h3 class="h4 fw-bold text-white mb-1">
                 {{ currentPlaylist.title }}
               </h3>
-              <p class="text-white-50 mb-0">正在播放此清單內容</p>
+              <p class="text-white-50 mb-0">
+                {{
+                  currentPlaylist.type === "video"
+                    ? "正在播放完整演出影片"
+                    : "正在播放此清單內容"
+                }}
+              </p>
             </div>
             <div class="playlist-badge">
               <i class="bi bi-play-circle-fill me-2"></i>
-              PLAYLIST
+              {{ currentPlaylist.type === "video" ? "VIDEO" : "PLAYLIST" }}
             </div>
           </div>
         </div>
@@ -189,10 +195,18 @@ export default {
   data() {
     return {
       currentPlaylist: {
-        id: "PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4",
-        title: "【品味三國——空城與古琴(貳)】",
+        id: "yQP2YhJIvHA",
+        title: "【紅樓夢．樂】(肆)元、迎、探、惜(完整版)",
+        type: "video",
+        firstVideoId: "yQP2YhJIvHA",
       },
       playlists: [
+        {
+          id: "yQP2YhJIvHA",
+          title: "【紅樓夢．樂】(肆)元、迎、探、惜(完整版)",
+          type: "video",
+          firstVideoId: "yQP2YhJIvHA",
+        },
         {
           id: "PLNgfI6_tCFiIjsseFl1-981CoBzzZyvw4",
           title: "【品味三國——空城與古琴(貳)】",
@@ -226,6 +240,14 @@ export default {
       ],
     };
   },
+  computed: {
+    currentEmbedUrl() {
+      if (this.currentPlaylist.type === "video") {
+        return `https://www.youtube.com/embed/${this.currentPlaylist.id}`;
+      }
+      return `https://www.youtube.com/embed/videoseries?list=${this.currentPlaylist.id}`;
+    },
+  },
   methods: {
     setCurrentPlaylist(playlist) {
       this.currentPlaylist = playlist;
@@ -235,8 +257,11 @@ export default {
       }
     },
     getPlaylistThumbnail(playlist) {
-      if (playlist.firstVideoId) {
-        return `https://i.ytimg.com/vi/${playlist.firstVideoId}/hqdefault.jpg`;
+      const videoId =
+        playlist.firstVideoId ||
+        (playlist.type === "video" ? playlist.id : null);
+      if (videoId) {
+        return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
       }
       return `https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80`;
     },
